@@ -3,7 +3,4 @@ name: default
 
 steps:
   - name: build
-    image: golang
-    commands:
-      - go install github.com/gohugoio/hugo@latest
-      - hugo
+    image: plugins/hugo
