@@ -1,46 +1,63 @@
 +++
-title = "Introduction: the \"dataset\" field"
-description = "Presenting the new metrics you can now filter on"
+title = "Introducing LeakIX Graph"
+description = "Take a look at our new mapping feature, visualize and make sense of Internet resources in a blink !"
 tags = [
     "howto",
     "feature",
-    "dataset",
+    "graph",
 ]
-date = "2020-10-08 14:30:00"
+date = "2022-01-21 06:30:00"
 categories = [
     "LeakIX How-to",
 ]
 keywords = [
     "leakix",
     "howto",
-    "search",
-    "database",
+    "graph",
 ]
 menu = "main"
-images = ["/leakix/dataset/dataset-size.png"]
+images = ["/leakix/graph/graph.gif"]
 +++
 
-Searching datasets based on size and row count is now as easy as it sounds !
-
+Take a look at our new mapping feature, visualize and make sense of Internet resources in a blink !
+![Home](/leakix/graph/graph.gif)
 <!--more-->
 
-#### Filtering on row count
+### Connecting the dots
 
-The field `dataset.rows` can now be filtered and range can be used on it, eg :
+Using our new graph UI and API allows researchers to give context to resources they're investigating.
 
-The query `dataset.rows:>0` will [display](https://leakix.net/search?scope=leak&q=dataset.rows%3A%3E0) anything indexed that contains at least 1 record :
+After selecting a resource type (DNS, IPs, ASN...) you can explore a subtree further with the context menu.
 
-![Dataset rows](/leakix/dataset/search-rows.png)
+![Home](/leakix/graph/menu.png)
 
+- **Remove**: will remove the node from the graph
+- **Start here**: will clear the workspace and start from the selected node
+- **Explore**: will explore the selected node further and add it to the graph
 
-#### Filtering on size
+You can open the menu by clicking (hold) the node for 1 second.
 
-The field `dataset.size` can now be filtered and range can be used on it, eg :
+### Suggested use cases
 
-The query `dataset.size:>1073741824` will [display](https://leakix.net/search?scope=leak&q=dataset.size%3A%3E1073741824) anything indexed that contains at least 1GB of data :
+- Identify subdomains
+- Identify IPs and networks used between resources
+- Identify alternate domain listening on asset's IPs
+- Rule in/out a leak based on connections (eg: Cloudflare, ELB, ect...) 
+- Group multiple leak as one source
 
-![Dataset rows](/leakix/dataset/dataset-size.png)
+### Built for the future
 
-Hope it helps your research !
+The switch to a graph database means a better structured backend for our future:
+
+The following changes are planned :
+
+- Link current search to graph database
+- Switch reporting system to the graph database
+- Allow report contacts filling through graph walk
+- Allow for report escalation to neighborhood nodes ( country CERT, hosting abuse)
+- Deduplication of all events ( including alerts )
+- Better alerting and personal dashboard
+
+Meanwhile, we hope it helps your research !
 
 [leakix]: <https://leakix.net/>
