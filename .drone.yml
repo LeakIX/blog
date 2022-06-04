@@ -10,7 +10,8 @@ steps:
       user: debian
       recursive: true
       hosts: [ "ovh01.nobody.run" ]
-      source: ./public
+      source: ./public/
       target: /var/www/blog/
+      args: "-v"
       key:
         from_secret: RSYNC_KEY
