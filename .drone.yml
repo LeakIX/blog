@@ -4,3 +4,13 @@ name: default
 steps:
   - name: build
     image: plugins/hugo
+  - name: deploy
+    image: drillster/drone-rsync
+    settings:
+      user: debian
+      recursive: true
+      hosts: [ "ovh01.nobody.run" ]
+      source: ./public
+      target: /var/www/blog/
+      key:
+        from_secret: RSYNC_KEY

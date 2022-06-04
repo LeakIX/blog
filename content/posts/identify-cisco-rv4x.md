@@ -26,14 +26,12 @@ A quick research into remotely identifying Cisco's RV43Xs
 
 ### Trigger
 
-We decided to identify those VPN routers on the Internet we noticed signs that a critical vulnerability could be exploited.
+We decided to identify those VPN routers on the Internet when we noticed signs that a critical vulnerability could be exploited.
 
 ### Methodology
 
 
 #### Find a target set
-
-With [AnisHaboubi](https://twitter.com/HaboubiAnis) we started looking for those routers on LeakIX.net.
 
 With no software name or version available we finally prepared a search query
 including a JARM filter :
@@ -51,9 +49,9 @@ With multiple panel at our disposal, we started searching for version numbers an
 
 ![/ciscorv/img.png](/ciscorv/img.png)
 
-Nothing caugth our eye in those scripts. They are reused accross multiple versions.
+Nothing caught our eye in those scripts. They are reused across multiple versions.
 
-[Anis](https://twitter.com/HaboubiAnis) then noticed the static files were returning `Last-Modified` headers :
+We then noticed the static files were returning `Last-Modified` headers :
 
 ![/ciscorv/img_2.png](/ciscorv/img_2.png)
 
@@ -68,7 +66,7 @@ To our surprise on the targets, the dates weren't matching any version whatsoeve
 
 One thing that caught my attention is the software nginx mentioned in the `Server` header.
 
-Surely that can't be an IOS firmware, so I downloaded the files from Cisco's
+Surely that can't be an IOS firmware, so we downloaded the files from Cisco's
 website (`RV34X-v1.0.03.24-2021-10-22-09-51-15-AM.img`) to investigate with it binwalk: 
 
 ```bash
@@ -152,7 +150,7 @@ _openwrt-comcerto2000-hgw-rootfs-ubi_nand.img.extracted/ubifs-root/1225039038/ro
 
 And that's it, we have the content of the rootfs available for reading.
 
-It's a fair assumption CISCO's using openwrt :)
+It's a fair assumption Cisco's using openwrt for those routers :)
 
 #### Find and ID the web files
 
@@ -201,15 +199,6 @@ var ciscoVersionMap = map[string][]string{
 ```
 
 ### End word
-
-Due to weird circumstance ( wrong firmware, oops ) I had completely overlooked the `Last-Modified` header.
-
-If I wasn't talking and collaborating in real-time with another researcher ( Anis ) on this I could have missed this information.
-
-I had old-days feeling, when it was not-so-much about the money, 
-but the satisfaction to combine our expertise in non-overlapping 
-areas to solve a problem.
-
 
 The results are now available at [https://leakix.net/search?scope=leak&q=plugin%3ACiscoRV](https://leakix.net/search?scope=leak&q=plugin%3ACiscoRV)
 
