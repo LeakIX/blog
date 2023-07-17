@@ -58,4 +58,3 @@ Confronting this issue requires a commitment to ethical practices:
 In cybersecurity, our responsibilities extend beyond defending against external threats. We must also uphold our internal commitment to honesty, authenticity, and ethical conduct. This includes our conduct on social media platforms. As we move forward, it's vital to know that the community is actively monitoring and checking companies exhibiting unethical behavior. Let's work together to ensure an environment that fosters genuine interaction and upholds the principles that our industry, and society at large, should value.
 ## Sources
 
-Screenshots by [MalwareHunterTream](https://twitter.com/malwrhunterteam/status/1677784988907913216)
