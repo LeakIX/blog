@@ -56,7 +56,7 @@ Btw [http://davenport.sourceforge.net/ntlm.html]([http://davenport.sourceforge.n
 
 # NTLM over HTTP
 
-In this article, we'll turn our attention to its usage in the HTTP protocol.
+In this article, we'll turn our attention to its usage over the HTTP protocol.
 
 If you ever accessed your company's intranet after logging in with your workstation without being asked for credentials, 
 chances are NTLM was used in the background to authenticate to the remote webserver.
@@ -64,7 +64,6 @@ chances are NTLM was used in the background to authenticate to the remote webser
 ![Home](/ntlm_http/intra_example.png)
 
 NTLM being a connection oriented protocol, HTTP keep-alive is used to keep the user authenticated through the same connection.
-
 
 ### Negotiation over HTTP
 Let's look at how the protocol is actually working over the wire :
@@ -240,5 +239,3 @@ Here we explored HTTP as we couldn't find any client allowing for such authentic
 [NNS](https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-nns/aaa2adb8-34a0-461c-941e-fca1319c5a50) is another protocol often used by .NET applications and was in fact the source of the last [Veeam critical RCE vulnerability](https://twitter.com/ptswarm/status/1503360681978077185).
 
 We will continue exploring other protocols for the same mis-configuration !
-
-
