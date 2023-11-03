@@ -2,13 +2,19 @@
 
 ## Hugo
 
-The blog is generated with Hugo. 
+The blog is generated with Hugo **extended**. 
 
-Hugo can be installed from https://github.com/gohugoio/hugo/releases/latest
+## Install Hugo
+
+```sh
+$ go install --tags extended github.com/gohugoio/hugo@latest
+```
 
 ## Develop mode
 
 ```sh
+$ git submodule init
+$ git submodule update
 $ hugo server
 Running in Fast Render Mode. For full rebuilds on change: hugo server --disableFastRender
 Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)
@@ -16,7 +22,7 @@ Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)
 
 ## Build static version
 
-Generates a static version in `static`
+Generates a static version in `public`
 
 ```sh
 $ hugo
