@@ -19,17 +19,16 @@ image = "cover.png"
 +++
 
 ## Table of Contents:
-
 - [Default SSH Root Credentials (CVE-2024-22902)](#default-ssh-root-credentials-cve-2024-22902)
-- [Hardcoded Database Credentials and Configuration Flaws (Previously identified as CVE-2022-35866 but remained unpatched in version 7.2) and now CVE-2024-22901](#hardcoded-database-credentials-and-configuration-flaws-previously-identified-as-cve-2022-35866-but-remained-unpatched-in-version-72-and-now-cve-2024-22901)
-- [Post-Authentication Remote Code Execution (RCE) in `SystemHandler.class.php` and `ManoeuvreHandler.class.php`](#post-authentication-remote-code-execution-rce-in-systemhandlerclassphp-and-manoeuvrehandlerclassphp)
+- [Hardcoded Database Credentials and Configuration Flaw (CVE-2024-22901)](#hardcoded-database-credentials-and-configuration-flaws-previously-identified-as-cve-2022-35866-but-remained-unpatched-in-version-72-and-now-cve-2024-22901)
+- [Post-Authentication Remote Code Execution (RCE)](#post-authentication-remote-code-execution-rce-in-systemhandlerclassphp-and-manoeuvrehandlerclassphp)
 - [Exploitation Methods](#exploitation-methods)
     - [A. Webdriver Chrome Simulation:](#a-webdriver-chrome-simulation)
     - [B. `curl` Method (using setNetworkCardInfo as example):](#b-curl-method-using-setnetworkcardinfo-as-example)
-- [Deep Dive into the `setNetworkCardInfo` Function Vulnerability in Vinchin Backup and Recovery (CVE-2024-22900)](#deep-dive-into-the-setnetworkcardinfo-function-vulnerability-in-vinchin-backup-and-recovery-cve-2024-22900)    
-- [Deep Dive into the syncNtpTime Function Vulnerability in Vinchin Backup and Recovery (CVE-2024-22899)](#deep-dive-into-the-syncntptime-function-vulnerability-in-vinchin-backup-and-recovery-cve-2024-22899)  
-- [Deep Dive into the `deleteUpdateAPK` Function Vulnerability in Vinchin Backup and Recovery (CVE-2024-22903)](#deep-dive-into-the-deleteupdateapk-function-vulnerability-in-vinchin-backup-and-recovery-cve-2024-22903)  
-- [Deep Dive into the `getVerifydiyResult` Function Vulnerability in Vinchin Backup and Recovery](#deep-dive-into-the-getverifydiyresult-function-vulnerability-in-vinchin-backup-and-recovery)  
+- [Deep Dive into the `setNetworkCardInfo` Function Vulnerability (CVE-2024-22900)](#deep-dive-into-the-setnetworkcardinfo-function-vulnerability-in-vinchin-backup-and-recovery-cve-2024-22900)    
+- [Deep Dive into the syncNtpTime Function Vulnerability (CVE-2024-22899)](#deep-dive-into-the-syncntptime-function-vulnerability-in-vinchin-backup-and-recovery-cve-2024-22899)  
+- [Deep Dive into the `deleteUpdateAPK` Function Vulnerability (CVE-2024-22903)](#deep-dive-into-the-deleteupdateapk-function-vulnerability-in-vinchin-backup-and-recovery-cve-2024-22903)  
+- [Deep Dive into the `getVerifydiyResult` Function Vulnerability](#deep-dive-into-the-getverifydiyresult-function-vulnerability-in-vinchin-backup-and-recovery)  
 - [Full Exploit Chain](#full-exploit-chain)  
 
 
@@ -48,7 +47,7 @@ Our discovery and subsequent analysis of these critical vulnerabilities in Vinch
 
 Thanks to this synergized approach, we were not only able to identify these vulnerabilities but also to understand their implications deeply and propose viable mitigation steps. We extend our gratitude to the researchers at LeakIX and everyone involved in this project. Their shared vision for a safer digital landscape and commitment to ethical hacking practices have made this discovery possible.
 
-## So let's start! :D
+## So let's start!
 
 ### Default SSH Root Credentials (CVE-2024-22902)
 
