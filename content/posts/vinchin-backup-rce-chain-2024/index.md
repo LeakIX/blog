@@ -214,6 +214,7 @@ An attacker can craft a POST request to exploit this vulnerability:
 ```http
 POST /api/ HTTP/1.1
 Host: [Vinchin Server IP]
+Origin: [Vinchin Server URL]
 Cookie: [Session Cookie]
 Content-Type: application/x-www-form-urlencoded; charset=UTF-8
 
@@ -282,6 +283,7 @@ An attacker can send a specially crafted HTTP POST request to trigger this vulne
 ```http
 POST /api/ HTTP/1.1
 Host: [Vinchin Server IP]
+Origin: [Vinchin Server URL]
 Cookie: [Session Cookie]
 Content-Type: application/x-www-form-urlencoded; charset=UTF-8
 
@@ -355,6 +357,7 @@ An attacker can send a POST request with a specially crafted `file_name` paramet
 ```http
 POST /api/ HTTP/1.1
 Host: [Vinchin Server IP]
+Origin: [Vinchin Server URL]
 Cookie: [Session Cookie]
 Content-Type: application/x-www-form-urlencoded; charset=UTF-8
 
@@ -427,6 +430,7 @@ An attacker sends a POST request with a crafted payload:
 ```http
 POST /api/ HTTP/1.1
 Host: [Vinchin Server IP]
+Origin: [Vinchin Server URL]
 Content-Type: application/x-www-form-urlencoded; charset=UTF-8
 Cookie: [Session Cookie]
 
