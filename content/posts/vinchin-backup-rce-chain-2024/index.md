@@ -411,7 +411,7 @@ public function getVerifydiyResult($params)
 3. **Command Injection in `verifyPing`**:
    The `verifyPing` method includes a direct execution of the `ping` command using `$value`:
    ```php
-   exec("ping -c 1 $value", $outcome, $status);
+   exec("ping -c 1" . $value, $outcome, $status);
    ```
    
    Due to the lack of sanitization or validation of `$value`, a command injection vulnerability is introduced.
