@@ -28,7 +28,7 @@ image = "cover.png"
 - [Deep Dive into the `setNetworkCardInfo` Function Vulnerability (CVE-2024-22900)](#deep-dive-into-the-setnetworkcardinfo-function-vulnerability-cve-2024-22900)    
 - [Deep Dive into the `syncNtpTime` Function Vulnerability (CVE-2024-22899)](#deep-dive-into-the-syncntptime-function-vulnerability-cve-2024-22899)  
 - [Deep Dive into the `deleteUpdateAPK` Function Vulnerability (CVE-2024-22903)](#deep-dive-into-the-deleteupdateapk-function-vulnerability-cve-2024-22903)  
-- [Deep Dive into the `getVerifydiyResult` Function Vulnerability](#deep-dive-into-the-getverifydiyresult-function-vulnerability)  
+- [Deep Dive into the `getVerifydiyResult` Function Vulnerability (CVE-2024-25228)](#deep-dive-into-the-getverifydiyresult-function-vulnerability-cve-2024-25228)  
 - [Full Exploit Chain](#full-exploit-chain)  
 
 
@@ -374,7 +374,7 @@ Vinchin should urgently address this vulnerability by implementing strict input 
 
 ---
 
-### Deep Dive into the `getVerifydiyResult` Function Vulnerability
+### Deep Dive into the `getVerifydiyResult` Function Vulnerability (CVE-2024-25228)
 
 ![](/vinchin-backup-rce-chain-2024/getVerifydiyResult.png)
 
