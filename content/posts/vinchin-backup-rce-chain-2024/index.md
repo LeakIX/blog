@@ -376,6 +376,21 @@ Vinchin should urgently address this vulnerability by implementing strict input 
 
 ### Deep Dive into the `getVerifydiyResult` Function Vulnerability (CVE-2024-25228)
 
+| Requirement               | Detail                                                                                   |
+|---------------------------|------------------------------------------------------------------------------------------|
+| Affected Product          | Vinchin Backup and Recovery 7.2 and Earlier                                              |
+| Affected or Fixed Version | 7.2 and Earlier - No fix                                                                 |
+| CVE ID                    | CVE-2024-25228            |
+| Vulnerability Type        | Authenticated Remote Code Execution                                                      |
+| Root Cause                | Improper validation and sanitization of user input in the `value` parameter in the `getVerifydiyResult` function. |
+| Impact                    | Code execution                                                                           |
+| Additional Information    | The vendor, Vinchin, has not acknowledged the vulnerability nor provided a patch.        |
+| Affected Component        | getVerifydiyResult function in /api/app/platform/ManoeuvreHandler.class.php              |
+| Attack Type               | Remote                                                                                   |
+| Attack Vectors            | Vulnerability due to improper validation of user input, allowing arbitrary command injection by authenticated attackers. |
+| Discoverer                | Valentin Lobstein                                                                        |
+| Reference                 | [Vinchin Website](http://vinchin.com)                                                    |
+
 ![](/vinchin-backup-rce-chain-2024/getVerifydiyResult.png)
 
 #### Vulnerability Overview:
