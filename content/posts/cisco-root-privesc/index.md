@@ -37,7 +37,7 @@ In the following picture `CVE-2023-20198` gets you the `IOSd` layer.
 
 ![Picture](/iosxe/iosxe.png)
 
-We're however looking for the NGINX config which is at the `Host OS` layer.
+We're however looking for the NGINX config which is at the `IOSd sub-system` layer.
 
 ### Looking for leads
 
