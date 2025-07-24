@@ -273,8 +273,12 @@ Yes, this is a Golang house here, but I'm sure someone can get it Pythoned for y
 
 
 
-## TODO
+## Credits, sources & thanks
 
-Credits and various links and thanks coming later!
-
-
+- [Original ZDI Advisory](https://www.zerodayinitiative.com/advisories/ZDI-25-580/)
+- [Viettel Security write-up by Khoa Dinh](https://blog.viettelcybersecurity.com/sharepoint-toolshell/)
+- [@irsdl details on X](https://x.com/irsdl/status/1946850548046524533)
+- [Miscrosoft Security Bulletin CVE-2025-49706](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-49706)
+- [Miscrosoft Security Bulletin CVE-2025-49707](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-49707)
+- [Miscrosoft Security Bulletin CVE-2025-53770](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-53770)
+- [Miscrosoft Security Bulletin CVE-2025-53771](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-53771)
