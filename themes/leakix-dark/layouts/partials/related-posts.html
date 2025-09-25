@@ -5,37 +5,41 @@
     <div class="row">
       {{ range $related }}
         <div class="col-md-4">
-          <div
-            class="related-post-card p-3 mb-3"
-            style="background-color: #1f2731; border: 1px solid #2a3138; border-radius: 12px;">
+          <article class="post-card">
             {{ if .Params.image }}
-              {{ $image := .Resources.GetMatch .Params.image }}
-              {{ if $image }}
-                <img
-                  src="{{ $image.RelPermalink }}"
-                  alt="{{ .Title }}"
-                  class="related-post-image mb-2"
-                  style="width: 100%; height: 120px; object-fit: cover; border-radius: 8px;" />
-              {{ else }}
-                <img
-                  src="{{ .Params.image | absURL }}"
-                  alt="{{ .Title }}"
-                  class="related-post-image mb-2"
-                  style="width: 100%; height: 120px; object-fit: cover; border-radius: 8px;" />
-              {{ end }}
-            {{ end }}
-            <h6 class="mb-2">
-              <a
-                href="{{ .Permalink }}"
-                style="color: #ffffff; text-decoration: none;">
-                {{ .Title }}
+              <a href="{{ .Permalink }}" class="card-img-wrapper">
+                {{ $image := .Resources.GetMatch .Params.image }}
+                {{ if $image }}
+                  <img
+                    src="{{ $image.RelPermalink }}"
+                    class="card-img-top"
+                    alt="{{ .Title }}"
+                    style="height: 120px;" />
+                {{ else }}
+                  <img
+                    src="{{ .Params.image | absURL }}"
+                    class="card-img-top"
+                    alt="{{ .Title }}"
+                    style="height: 120px;" />
+                {{ end }}
               </a>
-            </h6>
-            <p class="small text-light mb-2">
-              {{ .Date.Format "Jan 2, 2006" }}
-            </p>
-            <p class="small text-light">{{ .Summary | truncate 100 }}</p>
-          </div>
+            {{ end }}
+            <div class="card-body p-3">
+              <h6 class="card-title mb-1 fs-6">
+                <a href="{{ .Permalink }}" class="stretched-link">
+                  {{ .Title }}
+                </a>
+              </h6>
+              <div class="card-meta mb-2">
+                <time
+                  datetime="{{ .Date.Format "2006-01-02" }}"
+                  class="meta-item small">
+                  {{ .Date.Format "Jan 2, 2006" }}
+                </time>
+              </div>
+              <p class="card-text small mb-0">{{ .Summary | truncate 100 }}</p>
+            </div>
+          </article>
         </div>
       {{ end }}
     </div>
