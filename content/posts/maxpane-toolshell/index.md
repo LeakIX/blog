@@ -29,7 +29,7 @@ Exploring our adventure while building detection for SharePoint exploitation and
 We dealt with SharePoint before, we know it's only used by small organizations for which threat actors have little 
 interest in, that's why when we saw the following tweet, we decided to use our good old friend [TcpTrap](https://github.com/Minuntu/TcpTrap).
 
-{{< twitter 1943256506675401106 >}}
+{{< x user="_l0gg" id="1943256506675401106" >}}
 
 Of course, a big shoutout needs to be done to [Khoa Dinh](https://x.com/_l0gg) for pwning this robust piece of software!
 
@@ -205,7 +205,7 @@ So on we went, and after checking nothing was hurtful, we used their weapon, and
 
 Oh yes, also, we kept this in the corner of our mind:
 
-{{< twitter 1946850548046524533 >}}
+{{< x user="DIVD_nl" id="1946850548046524533" >}}
 
 None of the payloads previously shared had any trace of that slash, until, on the 23rd of July, our honeypot received
 this version of the payload:

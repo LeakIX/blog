@@ -1,0 +1,28 @@
+<footer>
+    <div class="container-fluid py-4">
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <div class="social-links d-flex gap-3">
+                    {{ if site.Params.twitter }}
+                    <a href="{{ site.Params.twitter }}" target="_blank" class="social-link">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    {{ end }}
+                    {{ if site.Params.github }}
+                    <a href="{{ site.Params.github }}" target="_blank" class="social-link">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    {{ end }}
+                    {{ if site.Params.linkedin }}
+                    <a href="{{ site.Params.linkedin }}" target="_blank" class="social-link">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    {{ end }}
+                    <a href="{{ "index.xml" | absURL }}" class="social-link">
+                        <i class="fas fa-rss"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

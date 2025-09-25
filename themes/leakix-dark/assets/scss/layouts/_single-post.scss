@@ -1,0 +1,129 @@
+// Single post styles
+.post-single {
+    .post-meta {
+        .meta-item {
+            color: $lkx-text-light;
+            font-size: 0.95rem;
+        }
+    }
+
+    .post-featured-image {
+        width: 100%;
+        max-height: 500px;
+        object-fit: cover;
+        border-radius: 16px;
+    }
+
+    .post-content {
+        .content-wrapper {
+            font-size: 1.1rem;
+            line-height: 1.8;
+
+            h2, h3, h4, h5, h6 {
+                margin-top: 2rem;
+                margin-bottom: 1rem;
+            }
+
+            p {
+                margin-bottom: 1.5rem;
+            }
+
+            img {
+                max-width: 100%;
+                height: auto;
+                border-radius: 8px;
+                margin: 2rem 0;
+            }
+
+            ul, ol {
+                margin-bottom: 1.5rem;
+                padding-left: 2rem;
+
+                li {
+                    margin-bottom: 0.5rem;
+                }
+            }
+        }
+    }
+
+    .post-navigation {
+        padding: 2rem 0;
+        border-top: 1px solid $lkx-card-border;
+
+        .nav-link-prev,
+        .nav-link-next {
+            display: block;
+            padding: 1rem;
+            background-color: $lkx-card-bg;
+            border: 1px solid $lkx-card-border;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+
+            &:hover {
+                border-color: $lkx-accent;
+                transform: translateY(-2px);
+
+                .nav-title {
+                    color: $lkx-accent;
+                }
+            }
+
+            .nav-label {
+                display: block;
+                font-size: 0.85rem;
+                color: $lkx-text-light;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                margin-bottom: 0.25rem;
+            }
+
+            .nav-title {
+                display: block;
+                color: $lkx-text;
+                font-weight: 500;
+                transition: color 0.3s ease;
+            }
+        }
+    }
+}
+
+// Table of contents
+.toc-sidebar {
+    position: sticky;
+    top: 2rem;
+
+    .toc-title {
+        color: $lkx-accent;
+        font-size: 1rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 1rem;
+    }
+
+    .toc-nav {
+        ul {
+            list-style: none;
+            padding-left: 0;
+
+            ul {
+                padding-left: 1rem;
+            }
+        }
+
+        a {
+            color: $lkx-text-light;
+            text-decoration: none;
+            display: block;
+            padding: 0.25rem 0;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+
+            &:hover {
+                color: $lkx-accent;
+                transform: translateX(4px);
+            }
+        }
+    }
+}

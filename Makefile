@@ -59,11 +59,6 @@ serve-public: build ## Serve the built public/ directory locally for testing
 	@echo "Serving public/ directory on http://localhost:8080/"
 	@cd public && python3 -m http.server 8080
 
-.PHONY: update-theme
-update-theme: ## Update the BlogRa theme submodule
-	@echo "Updating BlogRa theme..."
-	@git submodule update --remote themes/BlogRa
-	@echo "Theme updated!"
 
 .PHONY: lint
 lint: ## Check markdown files for issues
