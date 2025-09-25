@@ -1,53 +1,79 @@
 <nav class="navbar navbar-expand-lg navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand d-flex align-items-center p-2" href="{{ site.BaseURL }}">
-            <img src="{{ "images/logo.png" | absURL }}" alt="LeakIX" class="navbar-logo">
-        </a>
+  <div class="container-fluid">
+    <a
+      class="navbar-brand d-flex align-items-center p-2"
+      href="{{ site.BaseURL }}">
+      <img
+        src="{{ "images/logo.png" | absURL }}"
+        alt="LeakIX"
+        class="navbar-logo" />
+    </a>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-            <ul class="navbar-nav">
-                {{ range site.Menus.main }}
-                    {{ if .HasChildren }}
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                            {{ .Name }}
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-dark">
-                            {{ range .Children }}
-                                {{ if eq .Name "divider" }}
-                                <li><hr class="dropdown-divider"></li>
-                                {{ else }}
-                                <li><a class="dropdown-item" href="{{ .URL | absURL }}">{{ .Name }}</a></li>
-                                {{ end }}
-                            {{ end }}
-                        </ul>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        {{ range site.Menus.main }}
+          {{ if .HasChildren }}
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown">
+                {{ .Name }}
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark">
+                {{ range .Children }}
+                  {{ if eq .Name "divider" }}
+                    <li><hr class="dropdown-divider" /></li>
+                  {{ else }}
+                    <li>
+                      <a class="dropdown-item" href="{{ .URL | absURL }}">
+                        {{ .Name }}
+                      </a>
                     </li>
-                    {{ else if not (eq .Identifier "blog") }}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ .URL | absURL }}">{{ .Name }}</a>
-                    </li>
-                    {{ end }}
+                  {{ end }}
                 {{ end }}
+              </ul>
+            </li>
+          {{ else if not (eq .Identifier "blog") }}
+            <li class="nav-item">
+              <a class="nav-link" href="{{ .URL | absURL }}">{{ .Name }}</a>
+            </li>
+          {{ end }}
+        {{ end }}
 
-                <li class="nav-item">
-                    <a class="nav-link" href="https://leakix.net" target="_blank">
-                        LeakIX <i class="fas fa-external-link-alt ms-1 small"></i>
-                    </a>
-                </li>
-            </ul>
 
-            <form class="d-flex ms-3 search-form" action="{{ "search/" | absURL }}" method="get">
-                <div class="input-group">
-                    <input class="form-control" type="search" name="q" placeholder="Search...">
-                    <button class="btn btn-search" type="submit">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
-            </form>
+        <li class="nav-item">
+          <a class="nav-link" href="https://leakix.net" target="_blank">
+            LeakIX
+            <i class="fas fa-external-link-alt ms-1 small"></i>
+          </a>
+        </li>
+      </ul>
+
+      <form
+        class="d-flex ms-3 search-form"
+        action="{{ "search/" | absURL }}"
+        method="get">
+        <div class="input-group">
+          <input
+            class="form-control"
+            type="search"
+            name="q"
+            placeholder="Search..." />
+          <button class="btn btn-search" type="submit">
+            <i class="fas fa-search"></i>
+          </button>
         </div>
+      </form>
     </div>
+  </div>
 </nav>

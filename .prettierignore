@@ -1,0 +1,36 @@
+# Build outputs
+public/
+resources/
+.hugo_build.lock
+
+# Dependencies
+node_modules/
+
+# Hugo generated files
+*.min.css
+*.min.js
+
+# Git
+.git/
+
+# Cache
+.DS_Store
+Thumbs.db
+
+# Log files
+*.log
+
+# Images and binaries
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.ico
+*.woff
+*.woff2
+*.ttf
+*.eot
+
+# Old backup files
+*.old

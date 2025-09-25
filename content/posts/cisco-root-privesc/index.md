@@ -44,7 +44,7 @@ We're however looking for the NGINX config which is at the `IOSd sub-system` lay
 Our first lead comes from the [Talos Intelligence blog post](https://blog.talosintelligence.com/active-exploitation-of-cisco-ios-xe-software/) mentioning the following log entry:
 
 ```
-%WEBUI-6-INSTALL_OPERATION_INFO: User: username, Install Operation: ADD filename 
+%WEBUI-6-INSTALL_OPERATION_INFO: User: username, Install Operation: ADD filename
 ```
 
 Our second lead comes from the diff made by [Horizon3](https://www.horizon3.ai/cisco-ios-xe-cve-2023-20198-theory-crafting/):
@@ -85,9 +85,9 @@ endif
 
 As highlighted by Horizon3, the ipv6 validation method has been updated. It turns out we can pass an `ipaddress` as parameter to this endpoint which will end-up in the `url` variable.
 
-Due to a bug in the validating conditions, the only requirement for our IPv6 is to contain 3 fields delimited by `:`. 
+Due to a bug in the validating conditions, the only requirement for our IPv6 is to contain 3 fields delimited by `:`.
 
-Some other validation steps in `validateSmuRequest` and `formValidate` forbids us from using characters like `"`, `'`, ect ... in our payload. 
+Some other validation steps in `validateSmuRequest` and `formValidate` forbids us from using characters like `"`, `'`, ect ... in our payload.
 
 ### Command substitution to the rescue
 

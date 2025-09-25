@@ -28,7 +28,7 @@ After weeks of developement and testing we're proud to announce the release of L
 
 It has always been our target to help voluntary researchers and webmasters keeping the Internet safer.
 
-Next to each result you will now find a "create report" button, letting you start a disclosure process to the involved 
+Next to each result you will now find a "create report" button, letting you start a disclosure process to the involved
 parties :
 ![LeakIX reports](/lkx2021/search.png)
 
@@ -48,7 +48,7 @@ better navigation experience.
 
 ![LeakIX reports](/lkx2021/filters.png)
 
-## Other improvements 
+## Other improvements
 
 - Aggregation of leaked event for better results and statistics.
 - New statistics screen

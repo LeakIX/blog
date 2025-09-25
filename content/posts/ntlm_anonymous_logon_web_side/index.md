@@ -33,7 +33,7 @@ Through the years NTLM authentication has been used in various protocols as a co
 to authenticate on a Windows network :
 
 - SMB usually for file sharing
-- RDP 
+- RDP
 - NNS an "authenticated" TCP stack for .NET applications
 - HTTP
 
@@ -41,9 +41,9 @@ to authenticate on a Windows network :
 The NTLM authentication usually takes place in 3 steps :
 
 ```text
-CLIENT Sends a negotiation message --------------------> SERVER   
+CLIENT Sends a negotiation message --------------------> SERVER
 CLIENT <-------------------- A challenge is given by the SERVER
-CLIENT Sends a challenge response (creds) -------------> SERVER         
+CLIENT Sends a challenge response (creds) -------------> SERVER
 ```
 
 NTLM versions (1/2) and various negotiation flags will determine how the authentication is *"encrypted"* between
@@ -57,7 +57,7 @@ Btw [http://davenport.sourceforge.net/ntlm.html]([http://davenport.sourceforge.n
 
 In this article, we'll turn our attention to its usage over the HTTP protocol.
 
-If you ever accessed your company's intranet after logging in with your workstation without being asked for credentials, 
+If you ever accessed your company's intranet after logging in with your workstation without being asked for credentials,
 chances are NTLM was used in the background to authenticate to the remote webserver.
 
 ![Home](/ntlm_http/intra_example.png)
@@ -150,7 +150,7 @@ Now let's think about this for a second :
 
 ### Challenge response and auth over HTTP
 
-Reading carefully [Microsoft documentation](https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-nlmp/b38c36ed-2804-4868-a9ff-8dd3182128e4) about NTLM 
+Reading carefully [Microsoft documentation](https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-nlmp/b38c36ed-2804-4868-a9ff-8dd3182128e4) about NTLM
 reveals an interesting bit of information that's usually NOT implemented by NTLM clients :
 
 ![Home](/ntlm_http/MS_NOTE_ANON.png)
@@ -188,7 +188,7 @@ Host: 192.168.0.41:8080
 Authorization: NTLM TlRMTVNTUAADAAAAAQABAEgAAAAAAAAASQAAAAAAAABIAAAAAAAAAEgAAAAAAAAASAAAABAAEABJAAAANYKJ4AAAAAAAAAAAAEkIUrOKi10Sk8ki/EV6PpA=
 ```
 
-#### The application 
+#### The application
 
 What will happen next depends on the application using NTLM as authentication source.
 

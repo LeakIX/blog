@@ -41,7 +41,7 @@ You can open the menu by clicking (hold) the node for 1 second.
 - Identify subdomains
 - Identify IPs and networks used between resources
 - Identify alternate domain listening on asset's IPs
-- Rule in/out a leak based on connections (eg: Cloudflare, ELB, ect...) 
+- Rule in/out a leak based on connections (eg: Cloudflare, ELB, ect...)
 - Group multiple leak as one source
 
 ### Built for the future

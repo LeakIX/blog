@@ -2,7 +2,7 @@
 
 ## Hugo
 
-The blog is generated with Hugo **extended**. 
+The blog is generated with Hugo **extended**.
 
 ## Install Hugo
 
@@ -26,18 +26,18 @@ Generates a static version in `public`
 
 ```sh
 $ hugo
-Start building sites … 
+Start building sites …
 
-                   | EN  
+                   | EN
 -------------------+-----
-  Pages            | 68  
-  Paginator pages  | 11  
-  Non-page files   |  0  
-  Static files     | 32  
-  Processed images |  0  
-  Aliases          | 28  
-  Sitemaps         |  1  
-  Cleaned          |  0  
+  Pages            | 68
+  Paginator pages  | 11
+  Non-page files   |  0
+  Static files     | 32
+  Processed images |  0
+  Aliases          | 28
+  Sitemaps         |  1
+  Cleaned          |  0
 
 Total in 62 ms
 ```

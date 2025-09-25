@@ -1,116 +1,116 @@
 // Card component styles
 .post-card {
-    background-color: $lkx-card-bg;
-    border: 1px solid $lkx-card-border;
-    border-radius: 16px;
+  background-color: $lkx-card-bg;
+  border: 1px solid $lkx-card-border;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  position: relative;
+  margin-bottom: 1.5rem;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+    border-color: $lkx-accent;
+
+    .card-img-wrapper img {
+      transform: scale(1.05);
+    }
+
+    .card-title a {
+      color: $lkx-accent;
+    }
+  }
+
+  .card-img-wrapper {
     overflow: hidden;
+    display: block;
+
+    img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+  }
+
+  .card-body {
+    padding: 1.5rem;
+  }
+
+  .card-meta {
+    color: $lkx-text-light;
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+
+    .meta-item {
+      margin-right: 1rem;
+    }
+  }
+
+  .card-title {
+    margin-bottom: 1rem;
+
+    a {
+      color: $lkx-text;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+  }
+
+  .card-text {
+    color: $lkx-text-light;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .card-tags {
+    margin-bottom: 1rem;
+  }
+
+  .read-more {
+    color: $lkx-accent;
+    text-decoration: none;
+    font-weight: 500;
     transition: all 0.3s ease;
-    position: relative;
-    margin-bottom: 1.5rem;
 
     &:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 12px 24px rgba(0,0,0,0.4);
-        border-color: $lkx-accent;
-
-        .card-img-wrapper img {
-            transform: scale(1.05);
-        }
-
-        .card-title a {
-            color: $lkx-accent;
-        }
+      color: $lkx-accent-orange;
+      transform: translateX(4px);
     }
+  }
 
-    .card-img-wrapper {
-        overflow: hidden;
-        display: block;
-
-        img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-    }
-
-    .card-body {
-        padding: 1.5rem;
-    }
-
-    .card-meta {
-        color: $lkx-text-light;
-        font-size: 0.9rem;
-        margin-bottom: 0.75rem;
-
-        .meta-item {
-            margin-right: 1rem;
-        }
-    }
-
-    .card-title {
-        margin-bottom: 1rem;
-
-        a {
-            color: $lkx-text;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-    }
-
-    .card-text {
-        color: $lkx-text-light;
-        line-height: 1.6;
-        margin-bottom: 1rem;
-    }
-
-    .card-tags {
-        margin-bottom: 1rem;
-    }
-
-    .read-more {
-        color: $lkx-accent;
-        text-decoration: none;
-        font-weight: 500;
-        transition: all 0.3s ease;
-
-        &:hover {
-            color: $lkx-accent-orange;
-            transform: translateX(4px);
-        }
-    }
-
-    .reading-time {
-        color: $lkx-text-light;
-        font-size: 0.85rem;
-    }
+  .reading-time {
+    color: $lkx-text-light;
+    font-size: 0.85rem;
+  }
 }
 
 // Feature box
 .feature-box {
-    padding: 2rem;
-    background-color: $lkx-card-bg;
-    border: 1px solid $lkx-card-border;
-    border-radius: 16px;
-    transition: all 0.3s ease;
-    height: 100%;
+  padding: 2rem;
+  background-color: $lkx-card-bg;
+  border: 1px solid $lkx-card-border;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  height: 100%;
 
-    &:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-        border-color: $lkx-accent;
-    }
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    border-color: $lkx-accent;
+  }
 
-    .feature-icon {
-        color: $lkx-accent;
-        margin-bottom: 1rem;
-    }
+  .feature-icon {
+    color: $lkx-accent;
+    margin-bottom: 1rem;
+  }
 
-    h4 {
-        margin-bottom: 1rem;
-    }
+  h4 {
+    margin-bottom: 1rem;
+  }
 
-    p {
-        color: $lkx-text-light;
-    }
+  p {
+    color: $lkx-text-light;
+  }
 }

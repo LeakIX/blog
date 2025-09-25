@@ -1,40 +1,44 @@
 <div class="sidebar-widget mb-4">
-    <h5 class="widget-title">Categories</h5>
-    <ul class="widget-list">
-        {{ range $name, $taxonomy := site.Taxonomies.categories }}
-        <li class="widget-list-item">
-            <a href="{{ "categories/" | absURL }}{{ $name | urlize }}" class="widget-link">
-                {{ $name }}
-                <span class="widget-count">{{ len $taxonomy.Pages }}</span>
-            </a>
-        </li>
-        {{ end }}
-    </ul>
-</div>
-
-<div class="sidebar-widget mb-4">
-    <h5 class="widget-title">Popular Tags</h5>
-    <div class="tag-cloud">
-        {{ range $name, $taxonomy := site.Taxonomies.tags }}
-        {{ if le $taxonomy.Count 20 }}
-        <a href="{{ "tags/" | absURL }}{{ $name | urlize }}" class="tag-cloud-item">
-            {{ $name }}
+  <h5 class="widget-title">Categories</h5>
+  <ul class="widget-list">
+    {{ range $name, $taxonomy := site.Taxonomies.categories }}
+      <li class="widget-list-item">
+        <a
+          href="{{ "categories/" | absURL }}{{ $name | urlize }}"
+          class="widget-link">
+          {{ $name }}
+          <span class="widget-count">{{ len $taxonomy.Pages }}</span>
         </a>
-        {{ end }}
-        {{ end }}
-    </div>
+      </li>
+    {{ end }}
+  </ul>
 </div>
 
 <div class="sidebar-widget mb-4">
-    <h5 class="widget-title">Recent Posts</h5>
-    <ul class="widget-list">
-        {{ range first 5 (where site.RegularPages "Type" "posts") }}
-        <li class="widget-list-item">
-            <a href="{{ .Permalink }}" class="widget-link recent-post">
-                <span class="post-title">{{ .Title }}</span>
-                <span class="post-date">{{ .Date.Format "Jan 2, 2006" }}</span>
-            </a>
-        </li>
-        {{ end }}
-    </ul>
+  <h5 class="widget-title">Popular Tags</h5>
+  <div class="tag-cloud">
+    {{ range $name, $taxonomy := site.Taxonomies.tags }}
+      {{ if le $taxonomy.Count 20 }}
+        <a
+          href="{{ "tags/" | absURL }}{{ $name | urlize }}"
+          class="tag-cloud-item">
+          {{ $name }}
+        </a>
+      {{ end }}
+    {{ end }}
+  </div>
+</div>
+
+<div class="sidebar-widget mb-4">
+  <h5 class="widget-title">Recent Posts</h5>
+  <ul class="widget-list">
+    {{ range first 5 (where site.RegularPages "Type" "posts") }}
+      <li class="widget-list-item">
+        <a href="{{ .Permalink }}" class="widget-link recent-post">
+          <span class="post-title">{{ .Title }}</span>
+          <span class="post-date">{{ .Date.Format "Jan 2, 2006" }}</span>
+        </a>
+      </li>
+    {{ end }}
+  </ul>
 </div>

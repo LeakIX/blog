@@ -1,27 +1,43 @@
 {{ $related := .Site.RegularPages.Related . | first 3 }}
 {{ if $related }}
-<div class="related-posts mt-5">
+  <div class="related-posts mt-5">
     <h5 class="mb-4" style="color: #fab741;">Related Posts</h5>
     <div class="row">
-        {{ range $related }}
+      {{ range $related }}
         <div class="col-md-4">
-            <div class="related-post-card p-3 mb-3" style="background-color: #1f2731; border: 1px solid #2a3138; border-radius: 12px;">
-                {{ if .Params.image }}
-                {{ $image := .Resources.GetMatch .Params.image }}
-                {{ if $image }}
-                <img src="{{ $image.RelPermalink }}" alt="{{ .Title }}" class="related-post-image mb-2" style="width: 100%; height: 120px; object-fit: cover; border-radius: 8px;">
-                {{ else }}
-                <img src="{{ .Params.image | absURL }}" alt="{{ .Title }}" class="related-post-image mb-2" style="width: 100%; height: 120px; object-fit: cover; border-radius: 8px;">
-                {{ end }}
-                {{ end }}
-                <h6 class="mb-2">
-                    <a href="{{ .Permalink }}" style="color: #ffffff; text-decoration: none;">{{ .Title }}</a>
-                </h6>
-                <p class="small text-light mb-2">{{ .Date.Format "Jan 2, 2006" }}</p>
-                <p class="small text-light">{{ .Summary | truncate 100 }}</p>
-            </div>
+          <div
+            class="related-post-card p-3 mb-3"
+            style="background-color: #1f2731; border: 1px solid #2a3138; border-radius: 12px;">
+            {{ if .Params.image }}
+              {{ $image := .Resources.GetMatch .Params.image }}
+              {{ if $image }}
+                <img
+                  src="{{ $image.RelPermalink }}"
+                  alt="{{ .Title }}"
+                  class="related-post-image mb-2"
+                  style="width: 100%; height: 120px; object-fit: cover; border-radius: 8px;" />
+              {{ else }}
+                <img
+                  src="{{ .Params.image | absURL }}"
+                  alt="{{ .Title }}"
+                  class="related-post-image mb-2"
+                  style="width: 100%; height: 120px; object-fit: cover; border-radius: 8px;" />
+              {{ end }}
+            {{ end }}
+            <h6 class="mb-2">
+              <a
+                href="{{ .Permalink }}"
+                style="color: #ffffff; text-decoration: none;">
+                {{ .Title }}
+              </a>
+            </h6>
+            <p class="small text-light mb-2">
+              {{ .Date.Format "Jan 2, 2006" }}
+            </p>
+            <p class="small text-light">{{ .Summary | truncate 100 }}</p>
+          </div>
         </div>
-        {{ end }}
+      {{ end }}
     </div>
-</div>
+  </div>
 {{ end }}

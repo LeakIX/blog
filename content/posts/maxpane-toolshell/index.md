@@ -26,7 +26,7 @@ Exploring our adventure while building detection for SharePoint exploitation and
 
 # The ZDI moment
 
-We dealt with SharePoint before, we know it's only used by small organizations for which threat actors have little 
+We dealt with SharePoint before, we know it's only used by small organizations for which threat actors have little
 interest in, that's why when we saw the following tweet, we decided to use our good old friend [TcpTrap](https://github.com/Minuntu/TcpTrap).
 
 {{< x user="_l0gg" id="1943256506675401106" >}}
@@ -54,7 +54,7 @@ compromised.
 
 We decided to start sharing the list of compromised servers with the community.
 
-While believe in responsible disclosure, we also believe in transparence, for organizations and institutions that have 
+While believe in responsible disclosure, we also believe in transparence, for organizations and institutions that have
 been compromised, hence the IX part of the Leak-IX - OG's will know it's not a 9, but let's not diverge.
 
 Oh yeah, also our honeypots caught this, which got people overexcited for some reason:
@@ -81,7 +81,7 @@ more about this payload on [their blog post](https://research.eye.security/share
 
 If you try it, there's a good chance the exploit won't work, or will partially work.
 
-We knew all the SharePoint servers on the Internet have been sprayed with it, and yet, only a small quantity of them was 
+We knew all the SharePoint servers on the Internet have been sprayed with it, and yet, only a small quantity of them was
 showing the file present.
 
 *This is not its final form, this is not the full story* - we thought.
@@ -196,7 +196,7 @@ it for later!
 
 # The scan v1
 
-That's all we needed really, a way to determine vulnerability with a single request, and this one provides all the 
+That's all we needed really, a way to determine vulnerability with a single request, and this one provides all the
 information we need to ensure people understand they are vulnerable!
 
 So on we went, and after checking nothing was hurtful, we used their weapon, and started notifying people!

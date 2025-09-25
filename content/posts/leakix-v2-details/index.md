@@ -32,7 +32,7 @@ All details pages now come with new information linked to it :
 - IP list
 - Softwares and versions
 
-Furthermore, they also now come in 3 variant : 
+Furthermore, they also now come in 3 variant :
 
 ##### Host details
 

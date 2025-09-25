@@ -47,7 +47,7 @@ The status can either be :
 - Green, nothing found or informative content
 - Blue, small risk detected
 - Orange, A serious risk has been detected and should be investigated
-- Red, A leak is occuring or a critical software update is missing 
+- Red, A leak is occuring or a critical software update is missing
 
 The number represent the number of events (minor or major) found  for that domain.
 

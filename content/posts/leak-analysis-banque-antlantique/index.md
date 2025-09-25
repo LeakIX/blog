@@ -111,7 +111,7 @@ As you can see multiple credentials are leaking :
 
 - __LDAP credentials__ -> useful for all sort of internal applications to test against
 - __SMTP credentials__ -> useful for customer data mining and possibly scamming
-- App key -> Could be used to forge requests to the application or predict cryptographic events 
+- App key -> Could be used to forge requests to the application or predict cryptographic events
 
 ### Disclosure
 
@@ -119,7 +119,7 @@ Notification and disclosure to the mentioned tech emails and support team would 
 
 ![Disclosure](/banqueatlantique/report.png)
 
-The issue would be resolved quickly after contacting them, although no reply nor disclosure has been provided by the company. 
+The issue would be resolved quickly after contacting them, although no reply nor disclosure has been provided by the company.
 
 ### End word
 

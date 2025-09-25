@@ -52,7 +52,7 @@ AliBaba's documentation also states that a default username and password (`elast
 
 However, we can see the Elasticsearch version that was exposed is actually `5.5.3`.
 
-This look like a legacy Elasticsearch cluster version, **which did NOT support authentication out of the box** and required a paid license 
+This look like a legacy Elasticsearch cluster version, **which did NOT support authentication out of the box** and required a paid license
 or a third-party authentication plugin to enable it.
 
 An analysis of the running cluster features reveals that **x-pack** wasn't installed on any of the 33 servers.

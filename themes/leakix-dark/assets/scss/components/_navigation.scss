@@ -1,127 +1,127 @@
 // Navigation styles
 .navbar {
-    background-color: $lkx-bg-dark;
+  background-color: $lkx-bg-dark;
 
-    &-brand {
-        font-weight: 700;
-        font-size: 1.5rem;
+  &-brand {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: $lkx-accent;
+    text-decoration: none;
+
+    &:hover {
+      color: $lkx-accent;
+    }
+
+    .brand-text {
+      color: $lkx-text;
+      font-weight: 300;
+    }
+
+    .navbar-logo {
+      // Keep original logo colors - no filter applied
+      transition: transform 0.3s ease;
+      max-height: 60px;
+      width: auto;
+    }
+
+    &:hover .navbar-logo {
+      transform: scale(1.05);
+    }
+  }
+
+  .navbar-nav {
+    .nav-link {
+      color: $lkx-text;
+      padding: 0.5rem 1rem;
+      transition: all 0.3s ease;
+      position: relative;
+
+      &:hover,
+      &.active {
         color: $lkx-accent;
-        text-decoration: none;
+      }
 
-        &:hover {
-            color: $lkx-accent;
-        }
-
-        .brand-text {
-            color: $lkx-text;
-            font-weight: 300;
-        }
-
-        .navbar-logo {
-            // Keep original logo colors - no filter applied
-            transition: transform 0.3s ease;
-            max-height: 60px;
-            width: auto;
-        }
-
-        &:hover .navbar-logo {
-            transform: scale(1.05);
-        }
+      &.active::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 1rem;
+        right: 1rem;
+        height: 2px;
+        background-color: $lkx-accent;
+      }
     }
+  }
 
-    .navbar-nav {
-        .nav-link {
-            color: $lkx-text;
-            padding: 0.5rem 1rem;
-            transition: all 0.3s ease;
-            position: relative;
+  .dropdown-menu {
+    background-color: $lkx-card-bg;
+    border: 1px solid $lkx-card-border;
+    margin-top: 0.5rem;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  }
 
-            &:hover,
-            &.active {
-                color: $lkx-accent;
-            }
+  .dropdown-item {
+    color: $lkx-text;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
 
-            &.active::after {
-                content: '';
-                position: absolute;
-                bottom: 0;
-                left: 1rem;
-                right: 1rem;
-                height: 2px;
-                background-color: $lkx-accent;
-            }
-        }
+    &:hover {
+      background-color: rgba($lkx-accent, 0.1);
+      color: $lkx-accent;
+      transform: translateX(4px);
     }
+  }
 
-    .dropdown-menu {
-        background-color: $lkx-card-bg;
-        border: 1px solid $lkx-card-border;
-        margin-top: 0.5rem;
-        border-radius: 8px;
-        box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-    }
+  .dropdown-divider {
+    border-color: $lkx-card-border;
+  }
 
-    .dropdown-item {
-        color: $lkx-text;
-        padding: 0.5rem 1rem;
-        transition: all 0.3s ease;
+  .dropdown-toggle::after {
+    transition: transform 0.3s ease;
+  }
 
-        &:hover {
-            background-color: rgba($lkx-accent, 0.1);
-            color: $lkx-accent;
-            transform: translateX(4px);
-        }
-    }
-
-    .dropdown-divider {
-        border-color: $lkx-card-border;
-    }
-
-    .dropdown-toggle::after {
-        transition: transform 0.3s ease;
-    }
-
-    .dropdown-toggle[aria-expanded="true"]::after {
-        transform: rotate(180deg);
-    }
+  .dropdown-toggle[aria-expanded="true"]::after {
+    transform: rotate(180deg);
+  }
 }
 
 // Search bar
 .search-form {
-    .form-control {
-        background-color: $lkx-card-bg;
-        border: 1px solid $lkx-card-border;
-        color: $lkx-text;
+  .form-control {
+    background-color: $lkx-card-bg;
+    border: 1px solid $lkx-card-border;
+    color: $lkx-text;
 
-        &:focus {
-            background-color: $lkx-card-bg;
-            border-color: $lkx-accent;
-            color: $lkx-text;
-            box-shadow: 0 0 0 0.25rem rgba($lkx-accent, 0.25);
-        }
+    &:focus {
+      background-color: $lkx-card-bg;
+      border-color: $lkx-accent;
+      color: $lkx-text;
+      box-shadow: 0 0 0 0.25rem rgba($lkx-accent, 0.25);
     }
+  }
 
-    .btn-search {
-        background: linear-gradient(135deg, $lkx-accent, $lkx-accent-orange);
-        color: $lkx-text-dark;
-        border: none;
+  .btn-search {
+    background: linear-gradient(135deg, $lkx-accent, $lkx-accent-orange);
+    color: $lkx-text-dark;
+    border: none;
 
-        &:hover {
-            background: linear-gradient(135deg, $lkx-accent-orange, $lkx-accent);
-        }
+    &:hover {
+      background: linear-gradient(135deg, $lkx-accent-orange, $lkx-accent);
     }
+  }
 }
 
 // Mobile responsive
 @media (max-width: 992px) {
-    .navbar-collapse {
-        background-color: $lkx-bg;
-        padding: 1rem;
-        margin-top: 1rem;
-        border-radius: 8px;
-    }
+  .navbar-collapse {
+    background-color: $lkx-bg;
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 8px;
+  }
 
-    .search-form {
-        margin-top: 1rem;
-    }
+  .search-form {
+    margin-top: 1rem;
+  }
 }

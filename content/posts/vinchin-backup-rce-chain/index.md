@@ -132,7 +132,7 @@ setting up the root and user account, the software is up and running on port 443
 
 We made sure to add our user to the administrative group so `sudo` would let us run command as root once installed.
 
-Once logged in, we can see an NGINX/PHP installation running the frontend at `/usr/share/nginx/vinchin` 
+Once logged in, we can see an NGINX/PHP installation running the frontend at `/usr/share/nginx/vinchin`
 
 ### Encrypting and providing the key
 

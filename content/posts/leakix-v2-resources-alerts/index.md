@@ -46,12 +46,12 @@ which displays a summary of all the recent events linked to them.
 
 ![dash](/leakix/v2/resource-dash.png)
 
-3 different event levels are available for filtering, allowing you to prioritize incident response. 
+3 different event levels are available for filtering, allowing you to prioritize incident response.
 
 ### Configuring alerts
 
 The second advantage is enabling notifications every time LeakIX finds a service or leak matching your resources.
- 
+
 They can be configured by opening your [Alert settings](https://leakix.net/settings/alert) screen :
 
 ![mgmt](/leakix/v2/alert-settings.png)

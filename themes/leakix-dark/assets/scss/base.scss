@@ -26,8 +26,8 @@ $lkx-success: #28a745;
 $lkx-danger: #dc3545;
 
 // Import Bootstrap
-@import url('https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css');
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;700&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;700&display=swap");
 
 // Base styles
 * {
@@ -41,7 +41,7 @@ html {
 body {
   background-color: $lkx-bg;
   color: $lkx-text;
-  font-family: 'Roboto Mono', monospace;
+  font-family: "Roboto Mono", monospace;
   line-height: 1.6;
   min-height: 100%;
   display: flex;
@@ -63,18 +63,35 @@ a {
   }
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 300;
   margin-bottom: 1rem;
   color: $lkx-text;
 }
 
-h1 { font-size: 2.5rem; }
-h2 { font-size: 2rem; }
-h3 { font-size: 1.75rem; }
-h4 { font-size: 1.5rem; }
-h5 { font-size: 1.25rem; }
-h6 { font-size: 1rem; }
+h1 {
+  font-size: 2.5rem;
+}
+h2 {
+  font-size: 2rem;
+}
+h3 {
+  font-size: 1.75rem;
+}
+h4 {
+  font-size: 1.5rem;
+}
+h5 {
+  font-size: 1.25rem;
+}
+h6 {
+  font-size: 1rem;
+}
 
 .text-light {
   color: $lkx-text-light !important;
@@ -99,7 +116,7 @@ h6 { font-size: 1rem; }
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
     border-color: $lkx-accent;
   }
 }
@@ -118,7 +135,7 @@ h6 { font-size: 1rem; }
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(250,183,65,0.4);
+    box-shadow: 0 5px 15px rgba(250, 183, 65, 0.4);
     background: linear-gradient(135deg, $lkx-accent-orange, $lkx-accent);
   }
 }
@@ -169,7 +186,7 @@ pre {
 
   code {
     color: $lkx-accent;
-    font-family: 'Roboto Mono', monospace;
+    font-family: "Roboto Mono", monospace;
   }
 }
 
@@ -178,7 +195,7 @@ code {
   color: $lkx-accent;
   padding: 2px 6px;
   border-radius: 4px;
-  font-family: 'Roboto Mono', monospace;
+  font-family: "Roboto Mono", monospace;
 }
 
 // Blockquotes
@@ -256,7 +273,12 @@ table {
 
 // Utility classes
 .hero-gradient {
-  background: linear-gradient(135deg, $lkx-bg 0%, $lkx-hero-bg-mid 50%, $lkx-hero-bg-end 100%);
+  background: linear-gradient(
+    135deg,
+    $lkx-bg 0%,
+    $lkx-hero-bg-mid 50%,
+    $lkx-hero-bg-end 100%
+  );
 }
 
 .text-wrap-80 {
@@ -264,19 +286,25 @@ table {
 }
 
 // Import components
-@import 'components/navigation';
-@import 'components/cards';
-@import 'components/footer';
-@import 'components/sidebar';
+@import "components/navigation";
+@import "components/cards";
+@import "components/footer";
+@import "components/sidebar";
 
 // Import layouts
-@import 'layouts/single-post';
+@import "layouts/single-post";
 
 // Responsive
 @media (max-width: 768px) {
-  h1 { font-size: 2rem; }
-  h2 { font-size: 1.75rem; }
-  h3 { font-size: 1.5rem; }
+  h1 {
+    font-size: 2rem;
+  }
+  h2 {
+    font-size: 1.75rem;
+  }
+  h3 {
+    font-size: 1.5rem;
+  }
 
   .container-content {
     padding: 0 1rem;

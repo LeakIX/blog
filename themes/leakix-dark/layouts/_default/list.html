@@ -1,74 +1,85 @@
 {{ define "main" }}
-<div class="hero-gradient py-5">
+  <div class="hero-gradient py-5">
     <div class="container">
-        <h1 class="display-4 text-center mb-2" style="font-weight: 300;">
-            {{ .Title }}
-        </h1>
-        {{ if .Description }}
+      <h1 class="display-4 text-center mb-2" style="font-weight: 300;">
+        {{ .Title }}
+      </h1>
+      {{ if .Description }}
         <p class="text-center text-light mb-0">{{ .Description }}</p>
-        {{ end }}
+      {{ end }}
     </div>
-</div>
+  </div>
 
-<div class="container py-5">
+  <div class="container py-5">
     <div class="row">
-        <div class="col-lg-8">
-            {{ if .Content }}
-            <div class="content mb-5">
-                {{ .Content }}
+      <div class="col-lg-8">
+        {{ if .Content }}
+          <div class="content mb-5">
+            {{ .Content }}
+          </div>
+        {{ end }}
+
+
+        <div class="row">
+          {{ range .Paginator.Pages }}
+            <div class="col-12">
+              {{ partial "card.html" . }}
             </div>
-            {{ end }}
-
-            <div class="row">
-                {{ range .Paginator.Pages }}
-                <div class="col-12">
-                    {{ partial "card.html" . }}
-                </div>
-                {{ end }}
-            </div>
-
-            {{ if gt .Paginator.TotalPages 1 }}
-            <nav aria-label="Page navigation" class="mt-5">
-                <ul class="pagination justify-content-center">
-                    {{ if .Paginator.HasPrev }}
-                    <li class="page-item">
-                        <a class="page-link" href="{{ .Paginator.Prev.URL }}" aria-label="Previous">
-                            <i class="fas fa-chevron-left"></i>
-                        </a>
-                    </li>
-                    {{ else }}
-                    <li class="page-item disabled">
-                        <span class="page-link"><i class="fas fa-chevron-left"></i></span>
-                    </li>
-                    {{ end }}
-
-                    {{ range .Paginator.Pagers }}
-                    <li class="page-item {{ if eq . $.Paginator }}active{{ end }}">
-                        <a class="page-link" href="{{ .URL }}">{{ .PageNumber }}</a>
-                    </li>
-                    {{ end }}
-
-                    {{ if .Paginator.HasNext }}
-                    <li class="page-item">
-                        <a class="page-link" href="{{ .Paginator.Next.URL }}" aria-label="Next">
-                            <i class="fas fa-chevron-right"></i>
-                        </a>
-                    </li>
-                    {{ else }}
-                    <li class="page-item disabled">
-                        <span class="page-link"><i class="fas fa-chevron-right"></i></span>
-                    </li>
-                    {{ end }}
-                </ul>
-            </nav>
-            {{ end }}
+          {{ end }}
         </div>
 
-        <div class="col-lg-4">
-            <aside class="sidebar">
-                {{ partial "sidebar.html" . }}
-            </aside>
-        </div>
+        {{ if gt .Paginator.TotalPages 1 }}
+          <nav aria-label="Page navigation" class="mt-5">
+            <ul class="pagination justify-content-center">
+              {{ if .Paginator.HasPrev }}
+                <li class="page-item">
+                  <a
+                    class="page-link"
+                    href="{{ .Paginator.Prev.URL }}"
+                    aria-label="Previous">
+                    <i class="fas fa-chevron-left"></i>
+                  </a>
+                </li>
+              {{ else }}
+                <li class="page-item disabled">
+                  <span class="page-link">
+                    <i class="fas fa-chevron-left"></i>
+                  </span>
+                </li>
+              {{ end }}
+
+              {{ range .Paginator.Pagers }}
+                <li class="page-item {{ if eq . $.Paginator }}active{{ end }}">
+                  <a class="page-link" href="{{ .URL }}">{{ .PageNumber }}</a>
+                </li>
+              {{ end }}
+
+              {{ if .Paginator.HasNext }}
+                <li class="page-item">
+                  <a
+                    class="page-link"
+                    href="{{ .Paginator.Next.URL }}"
+                    aria-label="Next">
+                    <i class="fas fa-chevron-right"></i>
+                  </a>
+                </li>
+              {{ else }}
+                <li class="page-item disabled">
+                  <span class="page-link">
+                    <i class="fas fa-chevron-right"></i>
+                  </span>
+                </li>
+              {{ end }}
+            </ul>
+          </nav>
+        {{ end }}
+      </div>
+
+      <div class="col-lg-4">
+        <aside class="sidebar">
+          {{ partial "sidebar.html" . }}
+        </aside>
+      </div>
     </div>
-</div>
+  </div>
 {{ end }}

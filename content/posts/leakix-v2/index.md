@@ -52,6 +52,6 @@ You can use it by adding an `api-key` http header containing it to your requests
 
 #### Spiderfoot users
 
-The latest development version contains support for the new API key and can be found in the [master branch](https://github.com/smicallef/spiderfoot) 
+The latest development version contains support for the new API key and can be found in the [master branch](https://github.com/smicallef/spiderfoot)
 
 [leakix]: <https://leakix.net/>

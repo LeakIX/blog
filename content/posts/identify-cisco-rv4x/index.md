@@ -66,10 +66,10 @@ To our surprise on the targets, the dates weren't matching any version whatsoeve
 One thing that caught my attention is the software nginx mentioned in the `Server` header.
 
 Surely that can't be an IOS firmware, so we downloaded the files from Cisco's
-website (`RV34X-v1.0.03.24-2021-10-22-09-51-15-AM.img`) to investigate with it binwalk: 
+website (`RV34X-v1.0.03.24-2021-10-22-09-51-15-AM.img`) to investigate with it binwalk:
 
 ```bash
-$ binwalk ~/Downloads/RV34X-v1.0.03.24-2021-10-22-09-51-15-AM.img 
+$ binwalk ~/Downloads/RV34X-v1.0.03.24-2021-10-22-09-51-15-AM.img
 
 DECIMAL       HEXADECIMAL     DESCRIPTION
 --------------------------------------------------------------------------------
@@ -84,7 +84,7 @@ The first line tells us the firmware is a package and binwalk recognizes it.
 
 We extract that package, and repeat the process for every sub-package :
 
-```bash 
+```bash
 $ binwalk ~/Downloads/RV34X-v1.0.03.24-2021-10-22-09-51-15-AM.img -e .
 
 DECIMAL       HEXADECIMAL     DESCRIPTION

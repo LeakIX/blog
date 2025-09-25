@@ -1,0 +1,28 @@
+{
+  "name": "leakix-blog",
+  "version": "1.0.0",
+  "description": "LeakIX Blog - Security Research and Technical Analysis",
+  "scripts": {
+    "build": "make build",
+    "build:prod": "make build-prod",
+    "check-prettify": "make check-prettify",
+    "clean": "make clean",
+    "dev": "make dev",
+    "install-deps": "make install-deps",
+    "lint": "make lint",
+    "prettify": "make prettify",
+    "stats": "make stats"
+  },
+  "devDependencies": {
+    "prettier": "^3.1.0",
+    "prettier-plugin-go-template": "^0.0.15"
+  },
+  "keywords": [
+    "hugo",
+    "blog",
+    "security",
+    "leakix"
+  ],
+  "author": "LeakIX",
+  "license": "MIT"
+}

@@ -114,6 +114,6 @@ There will be a separate post describing the process, meanwhile the bravest can 
 
 This is just the first step as more integrations with other tools are making it to l9filter.
 
-We hope you have fun connecting those things together ! Feel free to report bugs and contribute on Github's project page. 
+We hope you have fun connecting those things together ! Feel free to report bugs and contribute on Github's project page.
 
 [leakix]: <https://leakix.net/>
