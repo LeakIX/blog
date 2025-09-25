@@ -2,7 +2,10 @@
 
 ## Context
 
-You are redesigning the LeakIX blog (https://github.com/LeakIX/blog) using Hugo to match the new LeakIX frontend design system. The main LeakIX website has been completely redesigned with a modern, dark-themed interface using Bootstrap 5.3 and custom SCSS.
+You are redesigning the LeakIX blog (https://github.com/LeakIX/blog) using Hugo
+to match the new LeakIX frontend design system. The main LeakIX website has been
+completely redesigned with a modern, dark-themed interface using Bootstrap 5.3
+and custom SCSS.
 
 ## Design System & Color Palette
 
@@ -54,7 +57,8 @@ $lkx-danger: #dc3545;
 
 ### 2. Hero/Header Sections
 
-- Gradient backgrounds: `linear-gradient(135deg, #181f27 0%, #232a35 50%, #1a2129 100%)`
+- Gradient backgrounds:
+  `linear-gradient(135deg, #181f27 0%, #232a35 50%, #1a2129 100%)`
 - Large display headings with light font-weight
 - Accent color (#fab741) for CTAs and highlights
 - Section padding: `py-5` standard
@@ -257,4 +261,7 @@ assets/scss/
 - [ ] Optimize performance
 - [ ] Configure deployment
 
-This design should maintain perfect consistency with the main LeakIX website while providing an optimal blogging experience. The dark theme, monospace font, and accent colors will create a cohesive brand experience across all LeakIX properties.
+This design should maintain perfect consistency with the main LeakIX website
+while providing an optimal blogging experience. The dark theme, monospace font,
+and accent colors will create a cohesive brand experience across all LeakIX
+properties.

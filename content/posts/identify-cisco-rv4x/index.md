@@ -21,52 +21,58 @@ image = "cover.png"
 +++
 
 A quick research into remotely identifying Cisco's RV43Xs
+
 <!--more-->
 
 ### Trigger
 
-We decided to identify those VPN routers on the Internet when we noticed signs that a critical vulnerability could be exploited.
+We decided to identify those VPN routers on the Internet when we noticed signs
+that a critical vulnerability could be exploited.
 
 ### Methodology
-
 
 #### Find a target set
 
 With no software name or version available we finally prepared a search query
 including a JARM filter :
 
-
 ```
 +http.status:301 +jarm:"29d29d00029d29d21c29d29d29d29d881e59db99b9f67f908be168829ecef9" +"Location: ./login.html" +"Content-Length: 178"
 ```
 
-This [LeakIX service query](https://leakix.net/search?scope=service&q=%2Bhttp.status%3A301+%2Bjarm%3A%2229d29d00029d29d21c29d29d29d29d881e59db99b9f67f908be168829ecef9%22+%2B%22Location%3A+.%2Flogin.html%22+%2B%22Content-Length%3A+178%22) allowed us to find all the RV34x we currently have in index.
+This
+[LeakIX service query](https://leakix.net/search?scope=service&q=%2Bhttp.status%3A301+%2Bjarm%3A%2229d29d00029d29d21c29d29d29d29d881e59db99b9f67f908be168829ecef9%22+%2B%22Location%3A+.%2Flogin.html%22+%2B%22Content-Length%3A+178%22)
+allowed us to find all the RV34x we currently have in index.
 
 #### Analyse the targets
 
-With multiple panel at our disposal, we started searching for version numbers anywhere in the code.
+With multiple panel at our disposal, we started searching for version numbers
+anywhere in the code.
 
 ![/ciscorv/img.png](/ciscorv/img.png)
 
-Nothing caught our eye in those scripts. They are reused across multiple versions.
+Nothing caught our eye in those scripts. They are reused across multiple
+versions.
 
 We then noticed the static files were returning `Last-Modified` headers :
 
 ![/ciscorv/img_2.png](/ciscorv/img_2.png)
 
-
 #### Checking facts
 
 We decided to start correlating those headers to actual release dates.
 
-To our surprise on the targets, the dates weren't matching any version whatsoever and where pretty random.
+To our surprise on the targets, the dates weren't matching any version
+whatsoever and where pretty random.
 
 #### Extracting the firmware
 
-One thing that caught my attention is the software nginx mentioned in the `Server` header.
+One thing that caught my attention is the software nginx mentioned in the
+`Server` header.
 
 Surely that can't be an IOS firmware, so we downloaded the files from Cisco's
-website (`RV34X-v1.0.03.24-2021-10-22-09-51-15-AM.img`) to investigate with it binwalk:
+website (`RV34X-v1.0.03.24-2021-10-22-09-51-15-AM.img`) to investigate with it
+binwalk:
 
 ```bash
 $ binwalk ~/Downloads/RV34X-v1.0.03.24-2021-10-22-09-51-15-AM.img
@@ -177,16 +183,18 @@ date matching the build file every time :
 
 ![/ciscorv/img_2.png](/ciscorv/img_3.png)
 
-
 #### Rechecking facts
 
-Using our target set, we try accessing multiple `/cgi-bin/blockpage.cgi` on multiple devices.
+Using our target set, we try accessing multiple `/cgi-bin/blockpage.cgi` on
+multiple devices.
 
-Everytime their `Last-Modified` header matches an image build [available for download](https://software.cisco.com/download/home/286287791/type/282465789/release/1.0.03.26).
+Everytime their `Last-Modified` header matches an image build
+[available for download](https://software.cisco.com/download/home/286287791/type/282465789/release/1.0.03.26).
 
 #### The boring part
 
-One can now build a bot that HEADs `/cgi-bin/blockpage.cgi`, and compare the `Last-Modified` header against the firmware list to get the final version :
+One can now build a bot that HEADs `/cgi-bin/blockpage.cgi`, and compare the
+`Last-Modified` header against the firmware list to get the final version :
 
 ```golang
 
@@ -199,6 +207,7 @@ var ciscoVersionMap = map[string][]string{
 
 ### End word
 
-The results are now available at [https://leakix.net/search?scope=leak&q=plugin%3ACiscoRV](https://leakix.net/search?scope=leak&q=plugin%3ACiscoRV)
+The results are now available at
+[https://leakix.net/search?scope=leak&q=plugin%3ACiscoRV](https://leakix.net/search?scope=leak&q=plugin%3ACiscoRV)
 
-[leakix]: <https://leakix.net/>
+[leakix]: https://leakix.net/

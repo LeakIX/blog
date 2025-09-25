@@ -19,14 +19,18 @@ image = "cover.png"
 
 +++
 
-Take a look at our new mapping feature, visualize and make sense of Internet resources in a blink !
+Take a look at our new mapping feature, visualize and make sense of Internet
+resources in a blink !
+
 <!--more-->
 
 ### Connecting the dots
 
-Using our new graph UI and API allows researchers to give context to resources they're investigating.
+Using our new graph UI and API allows researchers to give context to resources
+they're investigating.
 
-After selecting a resource type (DNS, IPs, ASN...) you can explore a subtree further with the context menu.
+After selecting a resource type (DNS, IPs, ASN...) you can explore a subtree
+further with the context menu.
 
 ![Home](/leakix/graph/menu.png)
 
@@ -53,10 +57,11 @@ The following changes are planned :
 - Link current search to graph database
 - Switch reporting system to the graph database
 - Allow report contacts filling through graph walk
-- Allow for report escalation to neighborhood nodes ( country CERT, hosting abuse)
+- Allow for report escalation to neighborhood nodes ( country CERT, hosting
+  abuse)
 - Deduplication of all events ( including alerts )
 - Better alerting and personal dashboard
 
 Meanwhile, we hope it helps your research !
 
-[leakix]: <https://leakix.net/>
+[leakix]: https://leakix.net/

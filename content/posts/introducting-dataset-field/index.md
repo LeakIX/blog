@@ -28,19 +28,22 @@ Searching datasets based on size and row count is now as easy as it sounds !
 
 The field `dataset.rows` can now be filtered and range can be used on it, eg :
 
-The query `dataset.rows:>0` will [display](https://leakix.net/search?scope=leak&q=dataset.rows%3A%3E0) anything indexed that contains at least 1 record :
+The query `dataset.rows:>0` will
+[display](https://leakix.net/search?scope=leak&q=dataset.rows%3A%3E0) anything
+indexed that contains at least 1 record :
 
 ![Dataset rows](/leakix/dataset/search-rows.png)
-
 
 #### Filtering on size
 
 The field `dataset.size` can now be filtered and range can be used on it, eg :
 
-The query `dataset.size:>1073741824` will [display](https://leakix.net/search?scope=leak&q=dataset.size%3A%3E1073741824) anything indexed that contains at least 1GB of data :
+The query `dataset.size:>1073741824` will
+[display](https://leakix.net/search?scope=leak&q=dataset.size%3A%3E1073741824)
+anything indexed that contains at least 1GB of data :
 
 ![Dataset rows](/leakix/dataset/dataset-size.png)
 
 Hope it helps your research !
 
-[leakix]: <https://leakix.net/>
+[leakix]: https://leakix.net/

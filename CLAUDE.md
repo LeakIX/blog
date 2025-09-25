@@ -1,10 +1,13 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to Claude Code (claude.ai/code) when working with
+code in this repository.
 
 ## Project Overview
 
-This is the LeakIX blog, a Hugo-based static site generator blog that uses a custom LeakIX Dark theme. The blog focuses on security research, vulnerability disclosures, and technical analysis.
+This is the LeakIX blog, a Hugo-based static site generator blog that uses a
+custom LeakIX Dark theme. The blog focuses on security research, vulnerability
+disclosures, and technical analysis.
 
 ## Commands
 
@@ -13,14 +16,17 @@ This is the LeakIX blog, a Hugo-based static site generator blog that uses a cus
 - `make dev` - Start local development server at http://localhost:1313/
 - `make dev-full` - Development server with full rebuilds on change
 - `hugo server` - Direct Hugo development server
-- `hugo server --disableFastRender` - Development server with full rebuilds on change
+- `hugo server --disableFastRender` - Development server with full rebuilds on
+  change
 
 ### Build
 
 - `make build` - Build static site to `public/` directory
-- `make build-prod` - Build production site with minification and garbage collection
+- `make build-prod` - Build production site with minification and garbage
+  collection
 - `hugo` - Direct Hugo build command
-- `hugo --gc --minify` - Build with garbage collection and minification (used in CI/CD)
+- `hugo --gc --minify` - Build with garbage collection and minification (used in
+  CI/CD)
 
 ### Other Commands
 
@@ -67,7 +73,8 @@ make install-deps
 - `content/posts/` - Blog posts in Markdown format
   - Each post is in its own directory with an `index.md` file
   - Posts can include images (e.g., `cover.png`) in the same directory
-  - Front matter includes: title, description, tags, date, categories, keywords, image
+  - Front matter includes: title, description, tags, date, categories, keywords,
+    image
 
 ### Post Format
 
@@ -106,4 +113,5 @@ GitHub Actions workflow (`.github/workflows/hugo.yml`) automatically:
 1. `make fix-trailing-whitespace` - Fix trailing whitespace in all files
 2. `make prettify` - Format code with Prettier
 
-This ensures consistent code formatting and removes trailing whitespace before committing changes.
+This ensures consistent code formatting and removes trailing whitespace before
+committing changes.

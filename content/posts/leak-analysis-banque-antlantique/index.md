@@ -22,17 +22,21 @@ image = "cover.png"
 ### When you ask for config files nicely ...
 
 ... you might as well [get some](https://leakix.net/host/154.68.41.73)!
+
 <!--more-->
 
-The server got indexed the first time by our system the __8th of August 2020__, with the content of the leak leaving now doubt about its origin :
+The server got indexed the first time by our system the **8th of August 2020**,
+with the content of the leak leaving now doubt about its origin :
 
 ![LeakIX results](/banqueatlantique/results.png)
 
-_The reports and leaks are visible to the reporting team only considering their risk, the detail page will however mention the leaks and reports count._
+_The reports and leaks are visible to the reporting team only considering their
+risk, the detail page will however mention the leaks and reports count._
 
 ### Problem
 
-The culprit here, is a left over `/.env` file revealing information about the infrastructure, and its credentials.
+The culprit here, is a left over `/.env` file revealing information about the
+infrastructure, and its credentials.
 
 ```sh
 $ curl 'http://154.68.41.73/.env'
@@ -109,25 +113,32 @@ ADMIN_MAIL_ADDRESS=<redacted>
 
 As you can see multiple credentials are leaking :
 
-- __LDAP credentials__ -> useful for all sort of internal applications to test against
-- __SMTP credentials__ -> useful for customer data mining and possibly scamming
-- App key -> Could be used to forge requests to the application or predict cryptographic events
+- **LDAP credentials** -> useful for all sort of internal applications to test
+  against
+- **SMTP credentials** -> useful for customer data mining and possibly scamming
+- App key -> Could be used to forge requests to the application or predict
+  cryptographic events
 
 ### Disclosure
 
-Notification and disclosure to the mentioned tech emails and support team would be fired on the __14th of August 2020__, 6 days after index :
+Notification and disclosure to the mentioned tech emails and support team would
+be fired on the **14th of August 2020**, 6 days after index :
 
 ![Disclosure](/banqueatlantique/report.png)
 
-The issue would be resolved quickly after contacting them, although no reply nor disclosure has been provided by the company.
+The issue would be resolved quickly after contacting them, although no reply nor
+disclosure has been provided by the company.
 
 ### End word
 
-There's a substantial amount of `.env` files in our index, you can [check it for yourself](https://leakix.net/search?page=0&q=%2Bplugin%3ADotEnvConfigPlugin&scope=leak).
+There's a substantial amount of `.env` files in our index, you can
+[check it for yourself](https://leakix.net/search?page=0&q=%2Bplugin%3ADotEnvConfigPlugin&scope=leak).
 
-__Tip__: You'll have to login to consult this specific plugin's details and data on the host detail page.
+**Tip**: You'll have to login to consult this specific plugin's details and data
+on the host detail page.
 
-Well that's all we have for today. There's ... still ... plenty more in the backlog. Stay tuned!
+Well that's all we have for today. There's ... still ... plenty more in the
+backlog. Stay tuned!
 
-[leakix]: <https://leakix.net/>
-[banqueatlantique]: <https://www.banqueatlantique.net/>
+[leakix]: https://leakix.net/
+[banqueatlantique]: https://www.banqueatlantique.net/

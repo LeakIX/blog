@@ -32,10 +32,10 @@ Go check it out and learn about filters and reports !
 
 <!--more-->
 
-Also don't forget to check and subscribe to his [Youtube Channel](https://www.youtube.com/channel/UCXXXoi68Hv6caNLWfw7j8MQ)
+Also don't forget to check and subscribe to his
+[Youtube Channel](https://www.youtube.com/channel/UCXXXoi68Hv6caNLWfw7j8MQ)
 
 ### Credits
 
 - [Cristi's Twitter](https://twitter.com/CristiVlad25)
 - [Cristi's Youtube Channel](https://www.youtube.com/channel/UCXXXoi68Hv6caNLWfw7j8MQ)
-

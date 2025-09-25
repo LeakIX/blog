@@ -21,45 +21,58 @@ keywords = [
 image = "cover.png"
 +++
 
-
 In this quick blog post we'll see what LeakIX has indexed over this incident.
+
 <!--more-->
 
 ## Software stack
 
-The service leaking the data was an unprotected Kibana instance running on port `5601` ( default Kibana port ).
+The service leaking the data was an unprotected Kibana instance running on port
+`5601` ( default Kibana port ).
 
-[Kibana](https://www.elastic.co/kibana/) is used to view data and administrate an Elasticsearch cluster and **allows for proxied connections** to the underlying Elasticsearch cluster.
+[Kibana](https://www.elastic.co/kibana/) is used to view data and administrate
+an Elasticsearch cluster and **allows for proxied connections** to the
+underlying Elasticsearch cluster.
 
-At the time of the index, the endpoint was running version `5.5.3` of the ELK stack.
+At the time of the index, the endpoint was running version `5.5.3` of the ELK
+stack.
 
 ![Home](/chinaleak/1.png)
 
 ## Cloud service
 
-The certificate information we gathered indicates the service was running behind `es-cn-ex719u34jb5099704.kibana.elasticsearch.aliyuncs.com`.
+The certificate information we gathered indicates the service was running behind
+`es-cn-ex719u34jb5099704.kibana.elasticsearch.aliyuncs.com`.
 
-This is the default Kibana endpoint exposed by AliBaba when an Elasticsearch service is deployed on a public network.
+This is the default Kibana endpoint exposed by AliBaba when an Elasticsearch
+service is deployed on a public network.
 
-[Alibaba's documentation](https://partners-intl.aliyun.com/help/en/elasticsearch/latest/log-on-to-the-kibana-console) currently states
-that exposure of the endpoint to a public network will happen by default.
+[Alibaba's documentation](https://partners-intl.aliyun.com/help/en/elasticsearch/latest/log-on-to-the-kibana-console)
+currently states that exposure of the endpoint to a public network will happen
+by default.
 
 ![Home](/chinaleak/3.png)
 
 ## Lack of password protection
 
-AliBaba's documentation also states that a default username and password (`elastic/elastic`) will be assigned to the ElasticSearch cluster.
+AliBaba's documentation also states that a default username and password
+(`elastic/elastic`) will be assigned to the ElasticSearch cluster.
 
-However, we can see the Elasticsearch version that was exposed is actually `5.5.3`.
+However, we can see the Elasticsearch version that was exposed is actually
+`5.5.3`.
 
-This look like a legacy Elasticsearch cluster version, **which did NOT support authentication out of the box** and required a paid license
-or a third-party authentication plugin to enable it.
+This look like a legacy Elasticsearch cluster version, **which did NOT support
+authentication out of the box** and required a paid license or a third-party
+authentication plugin to enable it.
 
-An analysis of the running cluster features reveals that **x-pack** wasn't installed on any of the 33 servers.
+An analysis of the running cluster features reveals that **x-pack** wasn't
+installed on any of the 33 servers.
 
 ## External activity
 
-The first sign of external activity [was detected around the 26th of June](https://leakix.net/host/101.89.99.234) by our probes with the appearance of the following indices :
+The first sign of external activity
+[was detected around the 26th of June](https://leakix.net/host/101.89.99.234) by
+our probes with the appearance of the following indices :
 
 ```
 Found index contact_for_data with 0 documents (810 B)
@@ -69,19 +82,23 @@ Found index contact_for_your_data with 2 documents (11.2 kB)
 Found index read_note_for_details with 1 documents (6.0 kB)
 ```
 
-This suggests at least 4 different groups got their hands on the cluster at that date.
+This suggests at least 4 different groups got their hands on the cluster at that
+date.
 
 Most of the data was also dropped, allegedly by the ransomware groupS.
 
 ## Other impacts
 
-Multiple ElasticSearch cluster deployed at Alibaba faced the same issue with older version of ElasticSearch all exposed if the default Kibana configuration was kept :
+Multiple ElasticSearch cluster deployed at Alibaba faced the same issue with
+older version of ElasticSearch all exposed if the default Kibana configuration
+was kept :
 
 [See other affected Kibana endpoints](https://leakix.net/search?scope=leak&q=%2Bssl.certificate.cn%3A%22kibana.elasticsearch.aliyuncs.com+%22)
 
 ![Home](/chinaleak/4.png)
 
-On the 1st of July, AliBaba has made private or has shutdown all the Kibana servers running `5.5.3`.
+On the 1st of July, AliBaba has made private or has shutdown all the Kibana
+servers running `5.5.3`.
 
 The oldest exposed endpoint is dated from `2020-12-24 20:30`.
 

@@ -20,7 +20,8 @@ image = "cover.png"
 
 +++
 
-The old ugly host details page was sure useful, but let's face it, it was unreadable
+The old ugly host details page was sure useful, but let's face it, it was
+unreadable
 
 <!--more-->
 
@@ -36,30 +37,37 @@ Furthermore, they also now come in 3 variant :
 
 ##### Host details
 
-Eg : [https://leakix.net/host/23.97.216.47](https://leakix.net/host/23.97.216.47)
+Eg :
+[https://leakix.net/host/23.97.216.47](https://leakix.net/host/23.97.216.47)
 
 ![host-scope](/leakix/v2/host-scope.png)
 
-All domains linked to this IP will now be displayed and can be followed for further investigation.
+All domains linked to this IP will now be displayed and can be followed for
+further investigation.
 
 ##### Domain details
 
-*If your search matched a domain, you will be directed to this page*
+_If your search matched a domain, you will be directed to this page_
 
-Eg : [https://leakix.net/domain/ruralskillsonline.com](https://leakix.net/domain/ruralskillsonline.com)
+Eg :
+[https://leakix.net/domain/ruralskillsonline.com](https://leakix.net/domain/ruralskillsonline.com)
 
 ![host-scope](/leakix/v2/domain-scope.png)
 
-All IPs and subdomains for this domain will now be displayed and can be followed for further investigation
+All IPs and subdomains for this domain will now be displayed and can be followed
+for further investigation
 
 ##### Network details
 
-Eg : [https://leakix.net/network/13.89.186.0/24](https://leakix.net/network/13.89.186.0/24)
+Eg :
+[https://leakix.net/network/13.89.186.0/24](https://leakix.net/network/13.89.186.0/24)
 
 ![host-scope](/leakix/v2/network-scope.png)
 
-This one is not linked from anywhere yet, although we plan to use this screen for users dashboard too.
+This one is not linked from anywhere yet, although we plan to use this screen
+for users dashboard too.
 
-Just know it's there, (:)) and like all details pages can be queried as `application/json` !
+Just know it's there, (:)) and like all details pages can be queried as
+`application/json` !
 
-[leakix]: <https://leakix.netloc/>
+[leakix]: https://leakix.netloc/

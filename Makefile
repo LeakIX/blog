@@ -74,10 +74,10 @@ lint: ## Check markdown files for issues
 	fi
 
 .PHONY: prettify
-prettify: ## Format HTML, SCSS, TypeScript, and JavaScript files with Prettier
+prettify: ## Format files with Prettier (includes markdown wrapping at 80 chars)
 	@if [ -f package.json ]; then \
 		npx prettier --write 'themes/**/*.{html,scss,css,js}' \
-			'layouts/**/*.html' '*.{json,md}'; \
+			'layouts/**/*.html' '*.{json,md}' 'content/**/*.md'; \
 	else \
 		echo "package.json not found. Run 'npm install' first."; \
 	fi
@@ -86,7 +86,7 @@ prettify: ## Format HTML, SCSS, TypeScript, and JavaScript files with Prettier
 check-prettify: ## Check if files are formatted with Prettier
 	@if [ -f package.json ]; then \
 		npx prettier --check 'themes/**/*.{html,scss,css,js}' \
-			'layouts/**/*.html' '*.{json,md}'; \
+			'layouts/**/*.html' '*.{json,md}' 'content/**/*.md'; \
 	else \
 		echo "package.json not found. Run 'npm install' first."; \
 	fi
@@ -115,6 +115,7 @@ check-trailing-whitespace: ## Check for trailing whitespace in files
 	else \
 		echo "No trailing whitespace found"; \
 	fi
+
 
 .PHONY: install-deps
 install-deps: ## Install Node.js dependencies for Prettier
