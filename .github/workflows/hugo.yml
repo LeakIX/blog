@@ -3,10 +3,9 @@
 name: Deploy Hugo site to Pages
 
 on:
-  # Runs on pushes targeting the default branch
+  # Runs on pushes to any branch and pull requests
   push:
-    branches:
-      - master
+  pull_request:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -41,9 +40,6 @@ jobs:
         run: |
           wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
           && sudo dpkg -i ${{ runner.temp }}/hugo.deb
-
-      - name: Install Dart Sass
-        run: sudo snap install dart-sass
 
       - name: Checkout
         uses: actions/checkout@v4
@@ -91,12 +87,15 @@ jobs:
           key: ${{ steps.cache-restore.outputs.cache-primary-key }}
 
       - name: Upload artifact
+        if: github.ref == 'refs/heads/master' && github.event_name == 'push'
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./public
 
   # Deployment job
   deploy:
+    # Only deploy on pushes to master branch
+    if: github.ref == 'refs/heads/master' && github.event_name == 'push'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
