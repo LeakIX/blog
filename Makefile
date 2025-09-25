@@ -1,0 +1,84 @@
+.PHONY: help
+help: ## Show this help message
+	@echo 'Usage: make [target]'
+	@echo ''
+	@echo 'Available targets:'
+	@grep -E '^[a-zA-Z0-9_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-20s\033[0m %s\n", $$1, $$2}'
+
+.PHONY: setup
+setup: ## Initialize the blog (install Hugo and setup submodules)
+	@echo "Installing Hugo extended version..."
+	@go install --tags extended github.com/gohugoio/hugo@latest
+	@echo "Initializing git submodules..."
+	@git submodule init
+	@git submodule update
+	@echo "Setup complete!"
+
+.PHONY: dev
+dev: ## Run development server on http://localhost:1313/
+	hugo server
+
+.PHONY: dev-full
+dev-full: ## Run development server with full rebuilds on change
+	hugo server --disableFastRender
+
+.PHONY: build
+build: ## Build static site to public/ directory
+	hugo
+
+.PHONY: build-prod
+build-prod: ## Build production site with minification and garbage collection
+	hugo --gc --minify
+
+.PHONY: clean
+clean: ## Clean generated files and caches
+	rm -rf public/
+	rm -rf resources/
+	rm -f .hugo_build.lock
+
+.PHONY: new-post
+new-post: ## Create a new blog post (usage: make new-post NAME="my-post-title")
+	@if [ -z "$(NAME)" ]; then \
+		echo "Error: Please provide a post name. Usage: make new-post NAME=\"my-post-title\""; \
+		exit 1; \
+	fi
+	@hugo new posts/$(NAME)/index.md
+	@echo "Created new post: content/posts/$(NAME)/index.md"
+
+.PHONY: check-links
+check-links: build ## Build site and check for broken links
+	@echo "Building site and checking for broken links..."
+	@if command -v muffet > /dev/null; then \
+		muffet http://localhost:1313/ --buffer-size 8192 --ignore-fragments || true; \
+	else \
+		echo "muffet not installed. Install with: go install github.com/raviqqe/muffet/v2@latest"; \
+	fi
+
+.PHONY: serve-public
+serve-public: build ## Serve the built public/ directory locally for testing
+	@echo "Serving public/ directory on http://localhost:8080/"
+	@cd public && python3 -m http.server 8080
+
+.PHONY: update-theme
+update-theme: ## Update the BlogRa theme submodule
+	@echo "Updating BlogRa theme..."
+	@git submodule update --remote themes/BlogRa
+	@echo "Theme updated!"
+
+.PHONY: lint
+lint: ## Check markdown files for issues
+	@if command -v markdownlint > /dev/null; then \
+		markdownlint content/posts/**/*.md || true; \
+	else \
+		echo "markdownlint not installed. Install with: npm install -g markdownlint-cli"; \
+	fi
+
+.PHONY: stats
+stats: ## Show blog statistics
+	@echo "Blog Statistics:"
+	@echo "================"
+	@echo "Total posts: $$(find content/posts -name "index.md" | wc -l)"
+	@echo "Total images: $$(find content/posts -name "*.png" -o -name "*.jpg" -o -name "*.jpeg" | wc -l)"
+	@echo "Latest post: $$(ls -t content/posts/*/index.md | head -n1 | xargs dirname | xargs basename)"
+
+.DEFAULT_GOAL := help
