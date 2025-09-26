@@ -2,6 +2,12 @@
 
 Hugo-based security blog with custom LeakIX Dark theme.
 
+## Requirements
+
+- Go 1.24+ (for Hugo installation)
+- Node.js (for Prettier formatting)
+- Ubuntu/Linux (primary supported platform)
+
 ## Quick Start
 
 ```sh

@@ -119,28 +119,24 @@ check-trailing-whitespace: ## Check for trailing whitespace in files
 
 .PHONY: install-deps
 install-deps: ## Install Hugo and Node.js dependencies
-	@echo "Installing Hugo extended version..."
-	@if ! command -v hugo > /dev/null || ! hugo version | grep -q extended; then \
-		if command -v go > /dev/null; then \
-			go install --tags extended github.com/gohugoio/hugo@latest; \
-			echo "Hugo installed via Go"; \
-		else \
-			echo "Installing Hugo via package manager..."; \
-			if [ "$$(uname)" = "Darwin" ]; then \
-				brew install hugo; \
-			elif [ "$$(uname)" = "Linux" ]; then \
-				if [ -f /etc/debian_version ]; then \
-					curl -LO https://github.com/gohugoio/hugo/releases/download/v0.150.1/hugo_extended_0.150.1_linux-amd64.deb && \
-					sudo dpkg -i hugo_extended_0.150.1_linux-amd64.deb && \
-					rm hugo_extended_0.150.1_linux-amd64.deb; \
-				else \
-					echo "Please install Hugo manually from https://gohugo.io/installation/"; \
-				fi; \
-			fi; \
-		fi; \
-	else \
-		echo "Hugo extended is already installed"; \
+	@echo "Checking Go version..."
+	@if ! command -v go > /dev/null; then \
+		echo "Error: Go is not installed. Please install Go 1.24 or later from https://go.dev/"; \
+		exit 1; \
 	fi
+	@GO_VERSION=$$(go version | grep -oE 'go[0-9]+\.[0-9]+' | sed 's/go//'); \
+	REQUIRED_VERSION="1.24"; \
+	if [ "$$(printf '%s\n' "$$REQUIRED_VERSION" "$$GO_VERSION" | sort -V | head -n1)" != "$$REQUIRED_VERSION" ]; then \
+		echo "Error: Go version $$GO_VERSION is installed, but version 1.24 or later is required"; \
+		echo "Please upgrade Go from https://go.dev/"; \
+		exit 1; \
+	else \
+		echo "Go version $$GO_VERSION detected (OK)"; \
+	fi
+	@echo "Installing Hugo extended version via Go..."
+	@go install --tags extended github.com/gohugoio/hugo@latest
+	@echo "Hugo installed successfully"
+	@hugo version
 	@echo "Installing Node.js dependencies..."
 	@npm install
 
