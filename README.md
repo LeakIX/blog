@@ -1,45 +1,27 @@
 # LeakIX blog
 
-## Hugo
+Hugo-based security blog with custom LeakIX Dark theme.
 
-The blog is generated with Hugo **extended**.
-
-## Install Hugo
+## Quick Start
 
 ```sh
-$ go install --tags extended github.com/gohugoio/hugo@latest
+# Install dependencies (Hugo extended + Node.js packages)
+make install-deps
+
+# Start development server
+make dev
+# Open http://localhost:1313/
 ```
 
-## Develop mode
+## Available Commands
 
 ```sh
-$ git submodule init
-$ git submodule update
-$ hugo server
-Running in Fast Render Mode. For full rebuilds on change: hugo server --disableFastRender
-Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)
-```
-
-## Build static version
-
-Generates a static version in `public`
-
-```sh
-$ hugo
-Start building sites …
-
-                   | EN
--------------------+-----
-  Pages            | 68
-  Paginator pages  | 11
-  Non-page files   |  0
-  Static files     | 32
-  Processed images |  0
-  Aliases          | 28
-  Sitemaps         |  1
-  Cleaned          |  0
-
-Total in 62 ms
+make help              # Show all commands
+make dev               # Start development server
+make build             # Build static site
+make new-post NAME="title"  # Create new post
+make prettify          # Format code
+make lint              # Check markdown
 ```
 
 ## Structure
