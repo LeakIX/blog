@@ -1,6 +1,6 @@
 +++
 title = "BanqueAtlantique.net, what your config reveals"
-description = ""
+description = "Analysis of a leaked .env configuration file from BanqueAtlantique.net exposing LDAP credentials, SMTP details, and application keys. Learn how misconfigurations can lead to serious security breaches."
 tags = [
     "fixed-undisclosed",
     "declassified",

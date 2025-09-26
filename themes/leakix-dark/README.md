@@ -52,6 +52,46 @@ leakix-dark/
 - Production deployments still work correctly with base URL
 - External links and asset URLs remain absolute
 
+### SEO Optimization (Latest)
+- **Structured Data**: Implemented comprehensive JSON-LD schemas for better search visibility
+  - BlogPosting schema for individual articles
+  - Organization schema for LeakIX brand information
+  - Blog schema for homepage optimization
+  - Following [Google's Structured Data Guidelines](https://developers.google.com/search/docs/appearance/structured-data)
+- **Enhanced Meta Tags**: Complete SEO meta tag implementation
+  - Open Graph and Twitter Card optimization
+  - Article-specific metadata (published/modified dates, sections, tags)
+  - Robots directives and language declarations
+  - Keywords and author attribution
+- **Technical SEO**: Core web standards compliance
+  - Robots.txt with proper sitemap references
+  - Canonical URL implementation
+  - Semantic HTML structure with proper heading hierarchy
+  - Following [Moz SEO Best Practices](https://moz.com/learn/seo/on-page-factors)
+- **Content Optimization**: Security blog specific enhancements
+  - Optimized meta descriptions for all posts
+  - Proper categorization and tagging for technical content
+  - Article sections for security research categorization
+
+### Favicon Implementation
+- **Multi-size Support**: Generated proper favicon sizes from rectangular logo
+  - 16x16px and 32x32px square PNG versions
+  - Multi-resolution ICO file for cross-browser compatibility
+  - Transparent background for consistent appearance
+- **Creation Process**: Convert rectangular logo (96x40) to square favicons
+  ```bash
+  # Create square favicon sizes with transparent background
+  convert themes/leakix-dark/static/images/logo.png -resize 32x32 -gravity center -extent 32x32 -background transparent static/favicon-32x32.png
+  convert themes/leakix-dark/static/images/logo.png -resize 16x16 -gravity center -extent 16x16 -background transparent static/favicon-16x16.png
+
+  # Generate multi-size ICO file
+  convert static/favicon-32x32.png static/favicon-16x16.png static/favicon.ico
+  ```
+- **HTML Integration**: Proper favicon references with MIME types and sizes
+  - ICO file for legacy browser support
+  - PNG files with size specifications for modern browsers
+  - Apple touch icon for iOS devices
+
 ## Design Decisions
 
 ### Color System
@@ -95,6 +135,27 @@ The search system operates entirely client-side:
    - Available on all pages
    - Submits to `/search/` with GET method
    - Responsive design with Bootstrap input group
+
+#### SEO Implementation
+The theme includes comprehensive SEO optimization following industry standards:
+
+1. **Structured Data** (`layouts/partials/structured-data.html`):
+   - JSON-LD schemas for articles, blog, and organization
+   - Implements [Schema.org BlogPosting](https://schema.org/BlogPosting) markup
+   - Organization schema with social media links and contact information
+   - Enables rich snippets in search results
+
+2. **Meta Tags** (`layouts/partials/seo.html`):
+   - Complete Open Graph and Twitter Card implementation
+   - Article-specific metadata (dates, authors, sections, tags)
+   - Follows [Open Graph Protocol](https://ogp.me/) specifications
+   - Robots directives and canonical URLs
+
+3. **Technical SEO**:
+   - Robots.txt with sitemap references (`static/robots.txt`)
+   - Semantic HTML5 structure with proper heading hierarchy
+   - Language declarations and author attribution
+   - Follows [Google's SEO Starter Guide](https://developers.google.com/search/docs/fundamentals/seo-starter-guide)
 
 ### Post Display
 
