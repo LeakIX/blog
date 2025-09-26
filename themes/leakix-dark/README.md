@@ -92,6 +92,26 @@ leakix-dark/
   - PNG files with size specifications for modern browsers
   - Apple touch icon for iOS devices
 
+### Cross-Platform Social Media Optimization
+- **Universal Open Graph Image**: Optimized for sharing across all major platforms
+  - 1200x630 dimensions (1.91:1 aspect ratio) - industry standard
+  - Works perfectly on Facebook, Twitter/X, LinkedIn, Reddit, Discord, Slack, WhatsApp, Bluesky, Mattermost
+  - LeakIX dark background (#181f27) for brand consistency
+- **Creation Process**: Generate from SVG source for optimal quality
+  ```bash
+  # Create cross-platform Open Graph image from SVG
+  convert logo.svg -resize 800x333 -gravity center -extent 1200x630 -background "#181f27" static/images/og-image.png
+  ```
+- **Platform Compatibility Research**: Based on 2025 social media standards
+  - [Social Media Image Sizes Guide - Hootsuite](https://blog.hootsuite.com/social-media-image-sizes-guide/)
+  - [Open Graph Protocol Specifications](https://ogp.me/)
+  - [Twitter Card Documentation](https://developer.twitter.com/en/docs/twitter-for-websites/cards)
+  - Cross-referenced with Buffer, Sprout Social, and SocialPilot guides
+- **Technical Implementation**: Enhanced meta tags for optimal platform support
+  - Twitter image dimensions metadata for better card display
+  - Open Graph protocol compliance for universal link preview support
+  - 1200x630 covers Facebook (perfect), Twitter (summary_large_image), LinkedIn (1200x627 near-identical)
+
 ## Design Decisions
 
 ### Color System
