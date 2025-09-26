@@ -1,0 +1,119 @@
+{{ define "main" }}
+  <article class="post-single">
+    <div class="hero-gradient py-5">
+      <div class="container">
+        <div class="container-content mx-auto">
+          <h1 class="display-4 mb-3">{{ .Title }}</h1>
+
+          <div
+            class="post-meta d-flex flex-wrap align-items-center gap-3 text-light">
+            <span class="meta-item">
+              <i class="far fa-calendar-alt me-1"></i>
+              {{ .Date.Format "January 2, 2006" }}
+            </span>
+            {{ if .Params.author }}
+              <span class="meta-item">
+                <i class="far fa-user me-1"></i>
+                {{ .Params.author }}
+              </span>
+            {{ end }}
+            <span class="meta-item">
+              <i class="far fa-clock me-1"></i>
+              {{ .ReadingTime }} min read
+            </span>
+          </div>
+
+          <div class="post-tags mt-3">
+            {{ range .Params.categories }}
+              <a
+                href="{{ "categories/" | absURL }}{{ . | urlize }}"
+                class="badge badge-category me-2">
+                {{ . }}
+              </a>
+            {{ end }}
+            {{ range .Params.tags }}
+              <a
+                href="{{ "tags/" | absURL }}{{ . | urlize }}"
+                class="badge badge-tag me-2">
+                #{{ . }}
+              </a>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <div class="post-content">
+            {{ if .Params.image }}
+              {{ $image := .Resources.GetMatch .Params.image }}
+              {{ if $image }}
+                <img
+                  src="{{ $image.RelPermalink }}"
+                  alt="{{ .Title }}"
+                  class="post-featured-image mb-4" />
+              {{ else }}
+                <img
+                  src="{{ .Params.image | absURL }}"
+                  alt="{{ .Title }}"
+                  class="post-featured-image mb-4" />
+              {{ end }}
+            {{ end }}
+
+
+            <div class="content-wrapper">
+              {{ .Content }}
+            </div>
+          </div>
+
+          {{ partial "social-share.html" . }}
+
+          {{ if .Params.author }}
+            {{ partial "author-bio.html" . }}
+          {{ end }}
+
+          {{ partial "related-posts.html" . }}
+
+
+          <nav class="post-navigation mt-5">
+            <div class="row">
+              <div class="col-6">
+                {{ if .PrevInSection }}
+                  <a
+                    href="{{ .PrevInSection.Permalink }}"
+                    class="nav-link-prev">
+                    <span class="nav-label">Previous Post</span>
+                    <span class="nav-title">{{ .PrevInSection.Title }}</span>
+                  </a>
+                {{ end }}
+              </div>
+              <div class="col-6 text-end">
+                {{ if .NextInSection }}
+                  <a
+                    href="{{ .NextInSection.Permalink }}"
+                    class="nav-link-next">
+                    <span class="nav-label">Next Post</span>
+                    <span class="nav-title">{{ .NextInSection.Title }}</span>
+                  </a>
+                {{ end }}
+              </div>
+            </div>
+          </nav>
+        </div>
+
+        {{ if .TableOfContents }}
+          <div class="col-lg-3 offset-lg-1 d-none d-lg-block">
+            <aside class="toc-sidebar sticky-top">
+              <h5 class="toc-title">Table of Contents</h5>
+              <nav class="toc-nav">
+                {{ .TableOfContents }}
+              </nav>
+            </aside>
+          </div>
+        {{ end }}
+      </div>
+    </div>
+  </article>
+{{ end }}

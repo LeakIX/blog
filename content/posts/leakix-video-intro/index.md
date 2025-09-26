@@ -24,18 +24,18 @@ image = "cover.png"
 
 +++
 
-[Cristi](https://twitter.com/cristiVlad25) made us a tutorial video! 
+[Cristi](https://twitter.com/cristiVlad25) made us a tutorial video!
 
-Go check it out and learn about filters and reports ! 
+Go check it out and learn about filters and reports !
 
 {{< youtube kf6dkODZNrM >}}
 
 <!--more-->
 
-Also don't forget to check and subscribe to his [Youtube Channel](https://www.youtube.com/channel/UCXXXoi68Hv6caNLWfw7j8MQ) 
+Also don't forget to check and subscribe to his
+[Youtube Channel](https://www.youtube.com/channel/UCXXXoi68Hv6caNLWfw7j8MQ)
 
 ### Credits
 
-- [Cristi's Twitter](https://twitter.com/CristiVlad25) 
+- [Cristi's Twitter](https://twitter.com/CristiVlad25)
 - [Cristi's Youtube Channel](https://www.youtube.com/channel/UCXXXoi68Hv6caNLWfw7j8MQ)
-

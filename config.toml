@@ -1,8 +1,9 @@
 baseurl = "https://blog.leakix.net/"
 languageCode = "en-us"
 title = "LeakIX blog"
-theme = "BlogRa"
-paginate = 5
+theme = "leakix-dark"
+[pagination]
+pagerSize = 5
 summaryLength = 50
 
 [permalinks]
@@ -52,7 +53,7 @@ date_format = "Mon Jan 02, 2006"
 [params]
     description     = "cat < /dev/mind > /dev/stdout"
     contactEmail    = "blog@leakix.net"
-    footer          = "© 2023 LeakIX"
+    footer          = "© 2025 LeakIX"
     googleSearch    = ""
     googleAnalytics = ""      # Google Analytics v4
     adsense         = ""

@@ -1,0 +1,47 @@
+{{ $related := .Site.RegularPages.Related . | first 3 }}
+{{ if $related }}
+  <div class="related-posts mt-5">
+    <h5 class="mb-4" style="color: #fab741;">Related Posts</h5>
+    <div class="row">
+      {{ range $related }}
+        <div class="col-md-4">
+          <article class="post-card">
+            {{ if .Params.image }}
+              <a href="{{ .Permalink }}" class="card-img-wrapper">
+                {{ $image := .Resources.GetMatch .Params.image }}
+                {{ if $image }}
+                  <img
+                    src="{{ $image.RelPermalink }}"
+                    class="card-img-top"
+                    alt="{{ .Title }}"
+                    style="height: 120px;" />
+                {{ else }}
+                  <img
+                    src="{{ .Params.image | absURL }}"
+                    class="card-img-top"
+                    alt="{{ .Title }}"
+                    style="height: 120px;" />
+                {{ end }}
+              </a>
+            {{ end }}
+            <div class="card-body p-3">
+              <h6 class="card-title mb-1 fs-6">
+                <a href="{{ .Permalink }}" class="stretched-link">
+                  {{ .Title }}
+                </a>
+              </h6>
+              <div class="card-meta mb-2">
+                <time
+                  datetime="{{ .Date.Format "2006-01-02" }}"
+                  class="meta-item small">
+                  {{ .Date.Format "Jan 2, 2006" }}
+                </time>
+              </div>
+              <p class="card-text small mb-0">{{ .Summary | truncate 100 }}</p>
+            </div>
+          </article>
+        </div>
+      {{ end }}
+    </div>
+  </div>
+{{ end }}

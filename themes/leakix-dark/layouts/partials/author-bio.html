@@ -1,0 +1,28 @@
+<div
+  class="author-bio mt-5 p-4"
+  style="background-color: #1f2731; border: 1px solid #2a3138; border-radius: 16px;">
+  <div class="d-flex align-items-start">
+    <div class="author-avatar me-3">
+      <div
+        class="avatar-placeholder d-flex align-items-center justify-content-center"
+        style="width: 80px; height: 80px; background-color: #fab741; border-radius: 50%; color: #090e15; font-weight: bold; font-size: 1.5rem;">
+        {{ substr .Params.author 0 1 | upper }}
+      </div>
+    </div>
+    <div class="author-info flex-grow-1">
+      <h5 class="mb-2" style="color: #fab741;">{{ .Params.author }}</h5>
+      <p class="text-light mb-3">
+        {{ .Params.author_bio | default "Security researcher and technical writer." }}
+      </p>
+      {{ if .Params.author_link }}
+        <a
+          href="{{ .Params.author_link }}"
+          target="_blank"
+          class="btn btn-outline btn-sm">
+          <i class="fas fa-external-link-alt me-2"></i>
+          View Profile
+        </a>
+      {{ end }}
+    </div>
+  </div>
+</div>

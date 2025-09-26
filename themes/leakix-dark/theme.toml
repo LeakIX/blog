@@ -1,0 +1,12 @@
+name = "LeakIX Dark"
+license = "MIT"
+licenselink = "https://github.com/LeakIX/blog/blob/master/LICENSE"
+description = "A dark theme for LeakIX blog matching the main site design"
+homepage = "https://blog.leakix.net/"
+tags = ["blog", "dark", "monospace", "bootstrap"]
+features = ["responsive", "dark mode", "search", "syntax highlighting"]
+min_version = "0.120.0"
+
+[author]
+  name = "LeakIX Team"
+  homepage = "https://leakix.net"

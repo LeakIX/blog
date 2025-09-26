@@ -20,7 +20,8 @@ image = "cover.png"
 
 +++
 
-We're releasing a good part of the toolset we use for our indexing service to the community !
+We're releasing a good part of the toolset we use for our indexing service to
+the community !
 
 Learn more about how to use them in this post.
 
@@ -28,17 +29,20 @@ Learn more about how to use them in this post.
 
 ### The tools
 
-We sure love to decouple every step of our scanning process, so it can be distributed and updated quickly to our needs.
+We sure love to decouple every step of our scanning process, so it can be
+distributed and updated quickly to our needs.
 
 There are a few parts involved, but so far the opensource releases are :
 
 - [ip4scout](https://github.com/LeakIX/ip4scout), our random ipv4 space scanner.
 - [l9tcpid](https://github.com/LeakIX/l9tcpid), our TCP protocol inspector.
-- [l9explore](https://github.com/LeakIX/l9explore), our deep protocol exploration tool.
-
+- [l9explore](https://github.com/LeakIX/l9explore), our deep protocol
+  exploration tool.
 
 ### Interoperability
-All those parts use **STDIN**/**STDOUT** to communicate JSON lines between each others. ( quick ACK to Project Discovery, it just makes sense !)
+
+All those parts use **STDIN**/**STDOUT** to communicate JSON lines between each
+others. ( quick ACK to Project Discovery, it just makes sense !)
 
 They all use a common schema : [l9format](https://github.com/LeakIX/l9format)
 
@@ -46,16 +50,18 @@ They all use a common schema : [l9format](https://github.com/LeakIX/l9format)
 
 The goal of any tool the l9 suite is simple :
 
-*Complete the schema by using the information it's provided*
+_Complete the schema by using the information it's provided_
 
-We also came up with [l9filter](https://github.com/LeakIX/l9filter) who's job is to transform l9format **to** and **from** any other supported format :
+We also came up with [l9filter](https://github.com/LeakIX/l9filter) who's job is
+to transform l9format **to** and **from** any other supported format :
 
 - nmap
 - masscan
 - human
-- *more coming*
+- _more coming_
 
-Doing so made it possible to use a tooling that was once written for random Internet scanning in private and other large networks.
+Doing so made it possible to use a tooling that was once written for random
+Internet scanning in private and other large networks.
 
 ### Scan your network
 
@@ -79,7 +85,8 @@ By working that way you can :
 - Import the JSON data to any backend for analysis
 - Use JQ to perform filtering
 
-With the next example, you can extract all the domains found in SSL certificates :
+With the next example, you can extract all the domains found in SSL certificates
+:
 
 ```sh
 jq 'select(.ssl.certificate.domain != null) .ssl.certificate.domain[]' < services.json|sort|uniq
@@ -95,25 +102,31 @@ jq 'select(.ssl.certificate.domain != null) .ssl.certificate.domain[]' < service
 
 ### Plugins
 
-[l9plugins](https://github.com/LeakIX/l9plugins) are currently used by l9explore. They could be implemented by any Golang based tool.
+[l9plugins](https://github.com/LeakIX/l9plugins) are currently used by
+l9explore. They could be implemented by any Golang based tool.
 
-There's a limited set at the moment, we're busy porting them from our old architecture.
+There's a limited set at the moment, we're busy porting them from our old
+architecture.
 
-|Plugin|Description|
-|------|-----|---|
-|mysql_open|Connects and checks for default credentials|
-|mongo_open|Connects and checks for open instance|
-|elasticsearch_open|Connects and checks for open instance|
-|redis_open|Connects and checks for open instance|
+| Plugin             | Description                                 |
+| ------------------ | ------------------------------------------- |
+| mysql_open         | Connects and checks for default credentials |
+| mongo_open         | Connects and checks for open instance       |
+| elasticsearch_open | Connects and checks for open instance       |
+| redis_open         | Connects and checks for open instance       |
 
 ### Creating plugins
 
-There will be a separate post describing the process, meanwhile the bravest can [check the interface reference](https://github.com/LeakIX/l9format/blob/master/l9plugin.md) if you want to develop your own.
+There will be a separate post describing the process, meanwhile the bravest can
+[check the interface reference](https://github.com/LeakIX/l9format/blob/master/l9plugin.md)
+if you want to develop your own.
 
 #### Conclusion
 
-This is just the first step as more integrations with other tools are making it to l9filter.
+This is just the first step as more integrations with other tools are making it
+to l9filter.
 
-We hope you have fun connecting those things together ! Feel free to report bugs and contribute on Github's project page. 
+We hope you have fun connecting those things together ! Feel free to report bugs
+and contribute on Github's project page.
 
-[leakix]: <https://leakix.net/>
+[leakix]: https://leakix.net/
