@@ -63,6 +63,7 @@ date_format = "Mon Jan 02, 2006"
     math            = false   # best to enable this in the front matter of a page
     mermaid         = false   # best to enable this in the front matter of a page
     author          = "BloodyShell"
+    defaultImage    = "/images/og-image.png"  # Default Open Graph image
 
     # Social Media Params
     facebook   = ""
