@@ -118,7 +118,25 @@ check-trailing-whitespace: ## Check for trailing whitespace in files
 
 
 .PHONY: install-deps
-install-deps: ## Install Node.js dependencies for Prettier
+install-deps: ## Install Hugo and Node.js dependencies
+	@echo "Checking Go version..."
+	@if ! command -v go > /dev/null; then \
+		echo "Error: Go is not installed. Please install Go 1.24 or later from https://go.dev/"; \
+		exit 1; \
+	fi
+	@GO_VERSION=$$(go version | grep -oE 'go[0-9]+\.[0-9]+' | sed 's/go//'); \
+	REQUIRED_VERSION="1.24"; \
+	if [ "$$(printf '%s\n' "$$REQUIRED_VERSION" "$$GO_VERSION" | sort -V | head -n1)" != "$$REQUIRED_VERSION" ]; then \
+		echo "Error: Go version $$GO_VERSION is installed, but version 1.24 or later is required"; \
+		echo "Please upgrade Go from https://go.dev/"; \
+		exit 1; \
+	else \
+		echo "Go version $$GO_VERSION detected (OK)"; \
+	fi
+	@echo "Installing Hugo extended version via Go..."
+	@go install --tags extended github.com/gohugoio/hugo@latest
+	@echo "Hugo installed successfully"
+	@hugo version
 	@echo "Installing Node.js dependencies..."
 	@npm install
 

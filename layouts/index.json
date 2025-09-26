@@ -1,0 +1,8 @@
+{{- $pctx := . -}}
+{{- if .IsHome -}}
+{{- $data := slice -}}
+{{- range $pctx.Site.RegularPages -}}
+  {{- $data = $data | append (dict "title" .Title "permalink" .Permalink "summary" .Summary "content" (.Plain | truncate 3000) "tags" .Params.tags "categories" .Params.categories "date" (.Date.Format "2006-01-02")) -}}
+{{- end -}}
+{{- $data | jsonify -}}
+{{- end -}}

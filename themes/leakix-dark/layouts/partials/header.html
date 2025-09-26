@@ -35,7 +35,7 @@
                     <li><hr class="dropdown-divider" /></li>
                   {{ else }}
                     <li>
-                      <a class="dropdown-item" href="{{ .URL | absURL }}">
+                      <a class="dropdown-item" href="{{ .URL | relURL }}">
                         {{ .Name }}
                       </a>
                     </li>
@@ -45,7 +45,7 @@
             </li>
           {{ else if not (eq .Identifier "blog") }}
             <li class="nav-item">
-              <a class="nav-link" href="{{ .URL | absURL }}">{{ .Name }}</a>
+              <a class="nav-link" href="{{ .URL | relURL }}">{{ .Name }}</a>
             </li>
           {{ end }}
         {{ end }}
@@ -61,7 +61,7 @@
 
       <form
         class="d-flex ms-3 search-form"
-        action="{{ "search/" | absURL }}"
+        action="{{ "search/" | relURL }}"
         method="get">
         <div class="input-group">
           <input

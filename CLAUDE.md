@@ -115,3 +115,25 @@ GitHub Actions workflow (`.github/workflows/hugo.yml`) automatically:
 
 This ensures consistent code formatting and removes trailing whitespace before
 committing changes.
+
+## Theme Documentation
+
+**IMPORTANT**: When making any changes to the `themes/leakix-dark/` directory:
+
+1. Always update the `themes/leakix-dark/README.md` file to reflect your changes
+2. Document any new functionality, design decisions, or structural changes
+3. Keep the README comprehensive so engineers can modify the theme manually
+   without assistance
+
+Recent changes to be aware of:
+
+- **Search Functionality**: Added client-side search with JSON index at
+  `/search/`
+- **URL Strategy**: All internal navigation links use `relURL` instead of
+  `absURL` for proper localhost development
+- **Search Files**:
+  - `content/search.md` - Search page content file
+  - `themes/leakix-dark/layouts/_default/search.html` - Search template with
+    JavaScript
+  - `layouts/index.json` - JSON index generation for search
+  - Search styles added to `themes/leakix-dark/assets/scss/base.scss`

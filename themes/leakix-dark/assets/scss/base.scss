@@ -294,6 +294,59 @@ table {
 // Import layouts
 @import "layouts/single-post";
 
+// Search page styles
+.search-result {
+  background-color: rgba($lkx-card-bg, 0.5);
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: $lkx-card-bg;
+    border-color: $lkx-accent !important;
+  }
+
+  h3 a {
+    color: $lkx-text;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $lkx-accent;
+    }
+  }
+
+  mark {
+    background-color: rgba($lkx-accent, 0.3);
+    color: $lkx-text;
+    padding: 0 2px;
+  }
+}
+
+#search-stats {
+  color: $lkx-text;
+
+  strong {
+    color: $lkx-accent;
+  }
+}
+
+.search-container {
+  .form-control {
+    background-color: $lkx-card-bg;
+    border: 1px solid $lkx-card-border;
+    color: $lkx-text;
+
+    &:focus {
+      background-color: $lkx-card-bg;
+      border-color: $lkx-accent;
+      box-shadow: 0 0 0 0.25rem rgba($lkx-accent, 0.25);
+      color: $lkx-text;
+    }
+
+    &::placeholder {
+      color: $lkx-text-light;
+    }
+  }
+}
+
 // Responsive
 @media (max-width: 768px) {
   h1 {

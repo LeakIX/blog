@@ -2,6 +2,9 @@ baseurl = "https://blog.leakix.net/"
 languageCode = "en-us"
 title = "LeakIX blog"
 theme = "leakix-dark"
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
 [pagination]
 pagerSize = 5
 summaryLength = 50

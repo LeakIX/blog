@@ -44,14 +44,14 @@
     <div class="card-tags mb-3">
       {{ range .Params.categories }}
         <a
-          href="{{ "categories/" | absURL }}{{ . | urlize }}"
+          href="{{ "categories/" | relURL }}{{ . | urlize }}"
           class="badge badge-category me-2">
           {{ . }}
         </a>
       {{ end }}
       {{ range first 3 (default (slice) .Params.tags) }}
         <a
-          href="{{ "tags/" | absURL }}{{ . | urlize }}"
+          href="{{ "tags/" | relURL }}{{ . | urlize }}"
           class="badge badge-tag me-2">
           #{{ . }}
         </a>
