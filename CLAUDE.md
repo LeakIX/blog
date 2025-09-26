@@ -106,6 +106,16 @@ GitHub Actions workflow (`.github/workflows/hugo.yml`) automatically:
 - Deploys to GitHub Pages
 - Uses Hugo extended v0.120.3
 
+## Git Workflow
+
+**CRITICAL**: Never push directly to the master branch.
+
+1. Always create a feature branch for any changes
+2. Use descriptive branch names (e.g., `feature/add-search`,
+   `fix/seo-improvements`)
+3. Submit changes via pull requests only
+4. Master branch is protected and requires PR approval
+
 ## Code Quality Guidelines
 
 **IMPORTANT**: After completing any prompt/request, always run:

@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://blog.leakix.net/sitemap.xml
+
+# Block any potential admin or development paths
+Disallow: /admin/
+Disallow: /.git/
+Disallow: /node_modules/

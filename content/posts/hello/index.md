@@ -1,6 +1,6 @@
 +++
 title = "Hello !"
-description = ""
+description = "Welcome to the LeakIX blog! Discover our declassified security reports, vulnerability research, and technical analysis covering the latest cybersecurity threats and discoveries."
 tags = [
     "intro",
 ]

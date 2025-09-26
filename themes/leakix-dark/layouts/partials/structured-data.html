@@ -1,0 +1,94 @@
+{{ $title := .Title | default site.Title }}
+{{ $description := .Description | default .Summary | default site.Params.description }}
+{{ $author := .Params.author | default site.Params.author }}
+{{ $image := .Params.image | default site.Params.defaultImage }}
+
+{{ if .IsPage }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "{{ $title }}",
+  "description": "{{ $description | plainify }}",
+  "author": {
+    "@type": "Person",
+    "name": "{{ $author }}",
+    "url": "{{ site.BaseURL }}"
+  },
+  "datePublished": "{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}",
+  "dateModified": "{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}",
+  {{ if $image }}"image": {
+    "@type": "ImageObject",
+    "url": "{{ $image | absURL }}",
+    "width": 1200,
+    "height": 630
+  },{{ end }}
+  "publisher": {
+    "@type": "Organization",
+    "name": "LeakIX",
+    "url": "{{ site.BaseURL }}",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ "images/logo.png" | absURL }}",
+      "width": 512,
+      "height": 512
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ .Permalink }}"
+  },
+  "articleSection": "{{ with .Params.categories }}{{ index . 0 }}{{ else }}Security Research{{ end }}",
+  "keywords": "{{ with .Params.tags }}{{ delimit . ", " }}{{ end }}{{ with .Params.keywords }}, {{ delimit . ", " }}{{ end }}"
+}
+</script>
+{{ else if .IsHome }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "{{ site.Title }}",
+  "description": "{{ site.Params.description }}",
+  "url": "{{ site.BaseURL }}",
+  "publisher": {
+    "@type": "Organization",
+    "name": "LeakIX",
+    "url": "{{ site.BaseURL }}",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ "images/logo.png" | absURL }}",
+      "width": 512,
+      "height": 512
+    },
+    "sameAs": [
+      "{{ site.Params.twitter }}",
+      "{{ site.Params.github }}",
+      "{{ site.Params.linkedin }}"
+    ]
+  }
+}
+</script>
+{{ end }}
+
+{{ if .IsHome }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "LeakIX",
+  "url": "{{ site.BaseURL }}",
+  "logo": "{{ "images/logo.png" | absURL }}",
+  "description": "Continuous internet-wide security monitoring and vulnerability research",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "{{ site.Params.contactEmail }}",
+    "contactType": "Customer Service"
+  },
+  "sameAs": [
+    "{{ site.Params.twitter }}",
+    "{{ site.Params.github }}",
+    "{{ site.Params.linkedin }}"
+  ]
+}
+</script>
+{{ end }}
