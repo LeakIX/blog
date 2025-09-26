@@ -4,7 +4,7 @@
     {{ range $name, $taxonomy := site.Taxonomies.categories }}
       <li class="widget-list-item">
         <a
-          href="{{ "categories/" | absURL }}{{ $name | urlize }}"
+          href="{{ "categories/" | relURL }}{{ $name | urlize }}"
           class="widget-link">
           {{ $name }}
           <span class="widget-count">{{ len $taxonomy.Pages }}</span>
@@ -20,7 +20,7 @@
     {{ range $name, $taxonomy := site.Taxonomies.tags }}
       {{ if le $taxonomy.Count 20 }}
         <a
-          href="{{ "tags/" | absURL }}{{ $name | urlize }}"
+          href="{{ "tags/" | relURL }}{{ $name | urlize }}"
           class="tag-cloud-item">
           {{ $name }}
         </a>

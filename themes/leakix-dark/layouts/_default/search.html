@@ -1,0 +1,212 @@
+{{ define "main" }}
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <h1 class="mb-4">Search Results</h1>
+
+        <div class="search-container mb-4">
+          <form
+            class="search-form"
+            action="{{ "search/" | relURL }}"
+            method="get">
+            <div class="input-group">
+              <input
+                class="form-control form-control-lg"
+                type="search"
+                name="q"
+                id="search-input"
+                placeholder="Search posts..."
+                value="" />
+              <button class="btn btn-search btn-lg" type="submit">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <div id="search-stats" class="mb-3"></div>
+
+        <div id="search-results">
+          <div class="text-center py-5">
+            <div class="spinner-border text-warning" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{{ end }}
+
+{{ define "scripts" }}
+  <script>
+    (function () {
+      const searchInput = document.getElementById('search-input');
+      const searchResults = document.getElementById('search-results');
+      const searchStats = document.getElementById('search-stats');
+
+      // Get query parameter
+      function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+      }
+
+      // Format date
+      function formatDate(dateStr) {
+        const date = new Date(dateStr);
+        return date.toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        });
+      }
+
+      // Highlight search terms
+      function highlight(text, query) {
+        if (!query) return text;
+        const words = query.split(/\s+/).filter(w => w.length > 0);
+        let result = text;
+        words.forEach(word => {
+          const regex = new RegExp(`(${word})`, 'gi');
+          result = result.replace(regex, '<mark>$1</mark>');
+        });
+        return result;
+      }
+
+      // Perform search
+      async function performSearch(query) {
+        if (!query || query.trim().length === 0) {
+          searchResults.innerHTML =
+            '<p class="text-muted">Enter a search term to find posts.</p>';
+          searchStats.innerHTML = '';
+          return;
+        }
+
+        searchResults.innerHTML = `
+      <div class="text-center py-5">
+        <div class="spinner-border text-warning" role="status">
+          <span class="visually-hidden">Searching...</span>
+        </div>
+      </div>
+    `;
+
+        try {
+          // Fetch the search index
+          const response = await fetch('/index.json');
+          const posts = await response.json();
+
+          // Search logic
+          const queryLower = query.toLowerCase();
+          const words = queryLower.split(/\s+/).filter(w => w.length > 0);
+
+          const results = posts.filter(post => {
+            const searchableText = [
+              post.title || '',
+              post.content || '',
+              post.summary || '',
+              (post.tags || []).join(' '),
+              (post.categories || []).join(' '),
+            ]
+              .join(' ')
+              .toLowerCase();
+
+            return words.every(word => searchableText.includes(word));
+          });
+
+          // Sort results by relevance (number of matches in title gets priority)
+          results.sort((a, b) => {
+            const aTitle = (a.title || '').toLowerCase();
+            const bTitle = (b.title || '').toLowerCase();
+            let aScore = 0,
+              bScore = 0;
+
+            words.forEach(word => {
+              if (aTitle.includes(word)) aScore += 10;
+              if (bTitle.includes(word)) bScore += 10;
+            });
+
+            return bScore - aScore;
+          });
+
+          // Update stats
+          searchStats.innerHTML = `Found ${results.length} result${results.length !== 1 ? 's' : ''} for "<strong>${query}</strong>"`;
+
+          // Display results
+          if (results.length === 0) {
+            searchResults.innerHTML = `
+          <div class="alert alert-warning">
+            <i class="fas fa-exclamation-triangle me-2"></i>
+            No posts found. Try different keywords.
+          </div>
+        `;
+          } else {
+            searchResults.innerHTML = results
+              .map(
+                post => `
+          <article class="search-result mb-4 p-3 border-start border-3 border-warning">
+            <h3 class="h4 mb-2">
+              <a href="${post.permalink}" class="text-decoration-none">
+                ${highlight(post.title || 'Untitled', query)}
+              </a>
+            </h3>
+            <div class="text-muted small mb-2">
+              <i class="far fa-calendar me-1"></i> ${formatDate(post.date)}
+              ${
+                post.categories && post.categories.length > 0
+                  ? `<span class="ms-3"><i class="far fa-folder me-1"></i> ${post.categories.join(', ')}</span>`
+                  : ''
+              }
+            </div>
+            <p class="mb-2">${highlight(post.summary || '', query)}</p>
+            ${
+              post.tags && post.tags.length > 0
+                ? `<div class="tags">
+                ${post.tags
+                  .map(
+                    tag =>
+                      `<span class="badge bg-secondary me-1">${tag}</span>`,
+                  )
+                  .join('')}
+              </div>`
+                : ''
+            }
+          </article>
+        `,
+              )
+              .join('');
+          }
+        } catch (error) {
+          console.error('Search error:', error);
+          searchResults.innerHTML = `
+        <div class="alert alert-danger">
+          <i class="fas fa-exclamation-circle me-2"></i>
+          An error occurred while searching. Please try again later.
+        </div>
+      `;
+        }
+      }
+
+      // Initialize search
+      const query = getQueryParam('q');
+      if (query) {
+        searchInput.value = query;
+        performSearch(query);
+      } else {
+        searchResults.innerHTML =
+          '<p class="text-muted">Enter a search term to find posts.</p>';
+      }
+
+      // Handle form submission
+      searchInput.form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const newQuery = searchInput.value;
+        if (newQuery) {
+          const newUrl = new URL(window.location);
+          newUrl.searchParams.set('q', newQuery);
+          window.history.pushState({}, '', newUrl);
+          performSearch(newQuery);
+        }
+      });
+    })();
+  </script>
+{{ end }}
