@@ -76,7 +76,7 @@ lint: ## Check markdown files for issues
 .PHONY: prettify
 prettify: ## Format files with Prettier (includes markdown wrapping at 80 chars)
 	@if [ -f package.json ]; then \
-		npx prettier --write 'themes/**/*.{html,scss,css,js}' \
+		npx prettier --write \
 			'layouts/**/*.html' '*.{json,md}' 'content/**/*.md'; \
 	else \
 		echo "package.json not found. Run 'npm install' first."; \
@@ -85,7 +85,7 @@ prettify: ## Format files with Prettier (includes markdown wrapping at 80 chars)
 .PHONY: check-prettify
 check-prettify: ## Check if files are formatted with Prettier
 	@if [ -f package.json ]; then \
-		npx prettier --check 'themes/**/*.{html,scss,css,js}' \
+		npx prettier --check \
 			'layouts/**/*.html' '*.{json,md}' 'content/**/*.md'; \
 	else \
 		echo "package.json not found. Run 'npm install' first."; \

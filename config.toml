@@ -1,7 +1,10 @@
 baseurl = "https://blog.leakix.net/"
 languageCode = "en-us"
 title = "LeakIX blog"
-theme = "leakix-dark"
+
+[module]
+  [[module.imports]]
+    path = "github.com/LeakIX/hugo-leakix-dark"
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]
