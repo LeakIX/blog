@@ -58,7 +58,7 @@ Hugo **extended** version is required. Install with:
 go install --tags extended github.com/gohugoio/hugo@latest
 ```
 
-No submodules needed - the custom LeakIX Dark theme is included directly.
+The LeakIX Dark theme is loaded as a Hugo module from GitHub.
 
 For development tools (Prettier), install Node.js dependencies:
 
@@ -83,13 +83,53 @@ Posts use Hugo front matter (+++...+++) with fields like:
 - title, description, tags, date, categories, keywords, image
 - Content after `<!--more-->` appears in full post view only
 
-### Theme Structure
+### Theme
 
-- `themes/leakix-dark/` - Custom LeakIX theme
-  - Dark theme with LeakIX branding
-  - Uses LeakIX color palette (#181f27, #fab741, etc.)
-  - Responsive Bootstrap 5.3 based design
-  - SCSS-based styling system
+The blog uses the external hugo-leakix-dark theme from GitHub:
+
+- Repository: https://github.com/LeakIX/hugo-leakix-dark
+- Dark theme with LeakIX branding
+- Uses LeakIX color palette (#181f27, #fab741, etc.)
+- Responsive Bootstrap 5.3 based design
+- SCSS-based styling system
+
+#### Updating the Theme
+
+To update the theme to a new release:
+
+1. **Check for new releases**:
+
+   ```bash
+   # View available releases
+   curl -s https://api.github.com/repos/LeakIX/hugo-leakix-dark/releases | jq '.[].tag_name'
+   ```
+
+2. **Update to latest version**:
+
+   ```bash
+   # Get the latest version
+   go get -u github.com/LeakIX/hugo-leakix-dark@latest
+
+   # Or update to a specific version
+   go get github.com/LeakIX/hugo-leakix-dark@v2025.09.27-0209018
+   ```
+
+3. **Clean Hugo module cache** (if needed):
+
+   ```bash
+   hugo mod clean
+   hugo mod tidy
+   ```
+
+4. **Verify the update**:
+
+   ```bash
+   # Check current version in go.mod
+   grep hugo-leakix-dark go.mod
+
+   # Test locally
+   make dev
+   ```
 
 ### Configuration
 
@@ -126,24 +166,12 @@ GitHub Actions workflow (`.github/workflows/hugo.yml`) automatically:
 This ensures consistent code formatting and removes trailing whitespace before
 committing changes.
 
-## Theme Documentation
+## Recent Changes
 
-**IMPORTANT**: When making any changes to the `themes/leakix-dark/` directory:
-
-1. Always update the `themes/leakix-dark/README.md` file to reflect your changes
-2. Document any new functionality, design decisions, or structural changes
-3. Keep the README comprehensive so engineers can modify the theme manually
-   without assistance
-
-Recent changes to be aware of:
-
+- **Theme Migration**: The theme has been extracted to an external repository
+  (https://github.com/LeakIX/hugo-leakix-dark) and is now loaded as a Hugo
+  module
 - **Search Functionality**: Added client-side search with JSON index at
   `/search/`
 - **URL Strategy**: All internal navigation links use `relURL` instead of
   `absURL` for proper localhost development
-- **Search Files**:
-  - `content/search.md` - Search page content file
-  - `themes/leakix-dark/layouts/_default/search.html` - Search template with
-    JavaScript
-  - `layouts/index.json` - JSON index generation for search
-  - Search styles added to `themes/leakix-dark/assets/scss/base.scss`
