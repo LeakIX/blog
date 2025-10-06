@@ -1,3 +1,4 @@
+# Run locally with: gh act --container-architecture linux/amd64 -j check-theme-update
 name: Check for Theme Updates
 
 on:
