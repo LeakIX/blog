@@ -26,36 +26,15 @@ jobs:
 
       - name: Get current theme version
         id: current-version
-        run: |
-          CURRENT=$(grep 'github.com/LeakIX/hugo-leakix-dark' go.mod | awk '{print $2}')
-          echo "version=$CURRENT" >> $GITHUB_OUTPUT
-          echo "Current theme version: $CURRENT"
+        run: .github/scripts/get-current-version.sh
 
       - name: Check for latest theme release
         id: check-update
-        run: |
-          # Get latest release from GitHub API
-          LATEST=$(curl -s https://api.github.com/repos/LeakIX/hugo-leakix-dark/commits/main | jq -r '.sha[:12]')
-          echo "latest=$LATEST" >> $GITHUB_OUTPUT
-          echo "Latest commit: $LATEST"
+        run: .github/scripts/check-latest-version.sh
 
       - name: Update theme
         id: update
-        run: |
-          # Update to latest version
-          go get -u github.com/LeakIX/hugo-leakix-dark@latest
-          go mod tidy
-
-          # Check if there were changes
-          if git diff --quiet go.mod go.sum; then
-            echo "updated=false" >> $GITHUB_OUTPUT
-            echo "No updates available"
-          else
-            echo "updated=true" >> $GITHUB_OUTPUT
-            NEW_VERSION=$(grep 'github.com/LeakIX/hugo-leakix-dark' go.mod | awk '{print $2}')
-            echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
-            echo "Theme updated to: $NEW_VERSION"
-          fi
+        run: .github/scripts/update-theme.sh
 
       - name: Create Pull Request
         if: steps.update.outputs.updated == 'true'
