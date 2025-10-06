@@ -73,6 +73,18 @@ lint: ## Check markdown files for issues
 		echo "npm install -g markdownlint-cli"; \
 	fi
 
+.PHONY: shellcheck
+shellcheck: ## Check shell scripts with shellcheck
+	@if command -v shellcheck > /dev/null; then \
+		echo "Running shellcheck on all shell scripts..."; \
+		find .github/scripts -name "*.sh" -exec shellcheck {} +; \
+		echo "Shellcheck passed!"; \
+	else \
+		echo "shellcheck not installed. Install with:"; \
+		echo "  Ubuntu/Debian: sudo apt-get install shellcheck"; \
+		echo "  macOS: brew install shellcheck"; \
+	fi
+
 .PHONY: prettify
 prettify: ## Format files with Prettier (includes markdown wrapping at 80 chars)
 	@if [ -f package.json ]; then \

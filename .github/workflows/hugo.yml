@@ -60,6 +60,9 @@ jobs:
       - name: Check trailing whitespace
         run: make check-trailing-whitespace
 
+      - name: Check shell scripts
+        run: make shellcheck
+
       - name: Cache Restore
         id: cache-restore
         uses: actions/cache/restore@v4
