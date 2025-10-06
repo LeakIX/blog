@@ -1,0 +1,76 @@
+# Run locally with: gh act --container-architecture linux/amd64 -j check-theme-update
+name: Check for Theme Updates
+
+on:
+  # Run every Monday at 9:00 AM UTC
+  schedule:
+    - cron: '0 9 * * 1'
+  # Allow manual trigger from Actions tab
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  check-theme-update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.25'
+
+      - name: Get current theme version
+        id: current-version
+        run: .github/scripts/get-current-version.sh
+
+      - name: Check for latest theme release
+        id: check-update
+        run: .github/scripts/check-latest-version.sh
+
+      - name: Update theme
+        id: update
+        run: .github/scripts/update-theme.sh
+
+      - name: Create Pull Request
+        if: steps.update.outputs.updated == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: |
+            Update hugo-leakix-dark theme to ${{ steps.update.outputs.new_version }}
+
+            Automated weekly check found a new version of the LeakIX Hugo theme.
+
+            Previous version: ${{ steps.current-version.outputs.version }}
+            New version: ${{ steps.update.outputs.new_version }}
+          branch: theme-update/auto-${{ github.run_number }}
+          delete-branch: true
+          title: 'Update hugo-leakix-dark theme'
+          body: |
+            ## Summary
+
+            Automated weekly check found a new version of the hugo-leakix-dark theme.
+
+            - **Previous version**: `${{ steps.current-version.outputs.version }}`
+            - **New version**: `${{ steps.update.outputs.new_version }}`
+
+            ## Changes
+
+            - Updated `go.mod` and `go.sum` with latest theme version
+            - Run `hugo mod clean && hugo mod tidy` if you need to rebuild locally
+
+            ## Test plan
+
+            - [ ] Verify the blog builds successfully
+            - [ ] Check that styling and theme elements render correctly
+            - [ ] Test locally with `make dev`
+            - [ ] Review any theme changelog at https://github.com/LeakIX/hugo-leakix-dark/releases
+
+            /cc @dannywillems @gboddin
+          assignees: dannywillems,gboddin
+          labels: dependencies,theme-update
